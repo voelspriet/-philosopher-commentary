@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Philosophy Meets Current Events</title>
+   <script src="https://cdn.tailwindcss.com"></script>
+   <style>
+       .philosopher-card { transition: all 0.3s ease; position: relative; }
+       .philosopher-card:hover { transform: translateY(-4px); box-shadow: 0 15px 35px rgba(0,0,0,0.2); }
+       .tooltip { position: absolute; bottom: 110%; left: 50%; transform: translateX(-50%); background: rgba(0,0,0,0.9); color: white; padding: 8px 12px; border-radius: 6px; font-size: 12px; white-space: nowrap; opacity: 0; transition: opacity 0.3s; z-index: 10; }
+       .philosopher-card:hover .tooltip { opacity: 1; }
+       .thinking-animation { animation: pulse 2s infinite; }
+       .fade-in { animation: fadeIn 0.6s ease-in; }
+       @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+   </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 min-h-screen">
+   <div class="container mx-auto px-4 py-8">
+       <div class="text-center mb-8">
+           <h1 class="text-4xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
+               Philosophy Meets Current Events
+           </h1>
+           <p class="text-lg text-gray-600">What would history's greatest minds think about today's headlines?</p>
+       </div>
+
+       <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 mb-8">
+           <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Choose Your Philosopher</h2>
+           
+           <div class="mb-6">
+               <h3 class="text-lg font-semibold text-gray-700 mb-3">📜 Classical Thinkers</h3>
+               <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-2">
+                   {% for id, philosopher in philosophers.items() if philosopher.era == "classical" %}
+                   <div class="philosopher-card bg-gradient-to-br {{ philosopher.color }} p-3 rounded-lg cursor-pointer text-white text-center shadow-lg border-2 border-amber-200" 
+                        onclick="selectPhilosopher('{{ id }}')">
+                       <div class="text-xl mb-1">{{ philosopher.image }}</div>
+                       <h3 class="font-bold text-xs">{{ philosopher.name.split()[0] }}</h3>
+                       <div class="tooltip">{{ philosopher.key_concepts|join(', ') }}</div>
+                   </div>
+                   {% endfor %}
+               </div>
+           </div>
+           
+           <div class="mb-6">
+               <h3 class="text-lg font-semibold text-gray-700 mb-3">🎤 Contemporary Voices</h3>
+               <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                   {% for id, philosopher in philosophers.items() if philosopher.era == "contemporary" %}
+                   <div class="philosopher-card bg-gradient-to-br {{ philosopher.color }} p-3 rounded-lg cursor-pointer text-white text-center shadow-lg border-2 border-blue-200" 
+                        onclick="selectPhilosopher('{{ id }}')">
+                       <div class="text-xl mb-1">{{ philosopher.image }}</div>
+                       <h3 class="font-bold text-xs">{{ philosopher.name.split()[0] }}</h3>
+                       <div class="tooltip">{{ philosopher.key_concepts|join(', ') }}</div>
+                   </div>
+                   {% endfor %}
+               </div>
+           </div>
+           
+           <div id="selected-philosopher" class="mt-6 p-4 bg-blue-50 rounded-lg hidden">
+               <div class="flex justify-between items-center">
+                   <div>
+                       <span class="font-semibold text-blue-800">Selected: </span>
+                       <span id="philosopher-name" class="text-blue-700"></span>
+                   </div>
+                   <button id="debate-btn" onclick="selectSecondPhilosopher()" class="px-3 py-1 bg-purple-500 text-white rounded text-sm">
+                       🗣️ Start Debate
+                   </button>
+               </div>
+           </div>
+
+           <div id="debate-selection" class="mt-4 p-4 bg-purple-50 rounded-lg hidden">
+               <p class="text-purple-800 mb-2">Select second philosopher for debate:</p>
+               <div class="grid grid-cols-4 md:grid-cols-8 gap-2" id="second-philosopher-grid"></div>
+           </div>
+       </div>
+
+       <div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+           <div id="news-loading" class="col-span-full text-center py-16">
+               <div class="animate-spin rounded-full h-16 w-16 border-4 border-blue-600 border-t-transparent mx-auto"></div>
+               <p class="mt-6 text-xl text-gray-600">Loading headlines...</p>
+           </div>
+       </div>
+
+       <div id="commentary-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+           <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[85vh] overflow-y-auto shadow-2xl">
+               <div class="sticky top-0 bg-white rounded-t-2xl border-b border-gray-200 p-4">
+                   <div class="flex justify-between items-start">
+                       <div class="flex items-center">
+                           <span id="modal-philosopher-image" class="text-3xl mr-3"></span>
+                           <h3 id="modal-title" class="text-xl font-bold text-gray-800"></h3>
+                       </div>
+                       <div class="flex gap-2">
+                           <button onclick="toggleAudio()" class="px-3 py-1 bg-green-500 text-white rounded text-sm">🔊 Listen</button>
+                           <button onclick="exportAnalysis()" class="px-3 py-1 bg-blue-500 text-white rounded text-sm">📄 Export</button>
+                           <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 text-2xl">×</button>
+                       </div>
+                   </div>
+                   <div class="mt-3 bg-gray-200 rounded-full h-1">
+                       <div id="progress-bar" class="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full transition-all duration-2s" style="width: 0%"></div>
+                   </div>
+               </div>
+               <div id="modal-content" class="p-6"></div>
+           </div>
+       </div>
+
+       <div id="debate-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+           <div class="bg-white rounded-2xl max-w-6xl w-full max-h-[85vh] overflow-y-auto shadow-2xl">
+               <div class="sticky top-0 bg-white rounded-t-2xl border-b border-gray-200 p-4">
+                   <h3 class="text-xl font-bold">🗣️ Philosophical Debate</h3>
+                   <button onclick="closeDebateModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl">×</button>
+               </div>
+               <div id="debate-content" class="p-6"></div>
+           </div>
+       </div>
+   </div>
+
+   <script>
+       let selectedPhilosopher = null;
+       let secondPhilosopher = null;
+       let debateMode = false;
+       let currentAnalysisId = null;
+       let isPlaying = false;
+       const philosophers = {{ philosophers|tojson }};
+
+       function getApprovalRating(text) {
+           const positiveWords = ['approve', 'support', 'beneficial', 'wise', 'good', 'right', 'excellent', 'positive'];
+           const negativeWords = ['condemn', 'oppose', 'harmful', 'dangerous', 'wrong', 'terrible', 'negative'];
+           
+           const textLower = text.toLowerCase();
+           const positive = positiveWords.filter(word => textLower.includes(word)).length;
+           const negative = negativeWords.filter(word => textLower.includes(word)).length;
+           
+           const score = Math.max(0, Math.min(100, 50 + (positive - negative) * 10));
+           return score;
+       }
+
+       function getApprovalIndicator(score) {
+           const color = score > 70 ? 'green' : score > 40 ? 'yellow' : 'red';
+           const emoji = score > 70 ? '✅' : score > 40 ? '🤔' : '❌';
+           const label = score > 70 ? 'Approves' : score > 40 ? 'Neutral' : 'Disapproves';
+           
+           return `
+               <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                   <div class="flex items-center gap-2">
+                       <span class="text-lg">${emoji}</span>
+                       <span class="font-semibold text-${color}-600">${label}</span>
+                   </div>
+                   <div class="flex-1">
+                       <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                           <div class="h-full bg-${color}-500 transition-all" style="width: ${score}%"></div>
+                       </div>
+                       <p class="text-xs text-gray-500 mt-1">Agreement Level: ${score}% (0=Strongly Disagrees, 100=Strongly Agrees)</p>
+                   </div>
+               </div>
+           `;
+       }
+
+       async function loadNews() {
+           const response = await fetch('/api/news');
+           const stories = await response.json();
+           displayNews(stories);
+       }
+
+       function displayNews(stories) {
+           const container = document.querySelector('.grid');
+           const loadingEl = document.getElementById('news-loading');
+           if(loadingEl) loadingEl.remove();
+
+           stories.forEach((story, index) => {
+               const card = document.createElement('div');
+               card.className = 'bg-white/90 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 fade-in';
+               card.innerHTML = `
+                   <div class="p-4">
+                       <div class="flex justify-between items-start mb-3">
+                           <span class="text-xs text-gray-500">${new Date(story.publishedAt).toLocaleDateString()}</span>
+                       </div>
+                       <h3 class="font-bold text-sm mb-3 text-gray-800 leading-tight">${story.title}</h3>
+                       <p class="text-gray-600 text-xs mb-4 leading-relaxed">${(story.description || '').substring(0, 80)}...</p>
+                       <button onclick="getCommentary(${index})" 
+                               class="w-full py-2 px-3 rounded-lg font-semibold text-xs transition-all ${!selectedPhilosopher ? 
+                               'bg-gray-300 text-gray-500 cursor-not-allowed' : 
+                               'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-lg'}"
+                               ${!selectedPhilosopher ? 'disabled' : ''}>
+                           <span class="button-text">${selectedPhilosopher ? 'Get ' + philosophers[selectedPhilosopher].name.split()[0] + ' Analysis' : 'Select Philosopher'}</span>
+                       </button>
+                   </div>
+               `;
+               container.appendChild(card);
+           });
+       }
+
+       function selectPhilosopher(philosopherId) {
+           selectedPhilosopher = philosopherId;
+           
+           document.querySelectorAll('.philosopher-card').forEach(card => {
+               card.classList.remove('ring-4', 'ring-white', 'scale-105');
+           });
+           event.target.closest('.philosopher-card').classList.add('ring-4', 'ring-white', 'scale-105');
+           
+           document.getElementById('selected-philosopher').classList.remove('hidden');
+           document.getElementById('philosopher-name').textContent = philosophers[philosopherId].name;
+
+           document.querySelectorAll('.button-text').forEach(btn => {
+               btn.textContent = 'Get ' + philosophers[philosopherId].name.split()[0] + ' Analysis';
+           });
+           
+           document.querySelectorAll('button[onclick^="getCommentary"]').forEach(btn => {
+               btn.disabled = false;
+               btn.className = btn.className.replace('bg-gray-300 text-gray-500 cursor-not-allowed', 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-lg');
+           });
+       }
+
+       function selectSecondPhilosopher() {
+           debateMode = true;
+           const grid = document.getElementById('second-philosopher-grid');
+           const selection = document.getElementById('debate-selection');
+           
+           grid.innerHTML = Object.keys(philosophers).filter(id => id !== selectedPhilosopher).map(id => `
+               <div class="philosopher-card bg-gradient-to-br ${philosophers[id].color} p-2 rounded cursor-pointer text-white text-center" 
+                    onclick="startDebate('${id}')">
+                   <div class="text-sm">${philosophers[id].image}</div>
+                   <div class="text-xs font-bold">${philosophers[id].name.split()[0]}</div>
+               </div>
+           `).join('');
+           
+           selection.classList.remove('hidden');
+       }
+
+       async function startDebate(philosopher2Id) {
+           secondPhilosopher = philosopher2Id;
+           // For now, just show alert - debate implementation would go here
+           alert(`Debate between ${philosophers[selectedPhilosopher].name} and ${philosophers[philosopher2Id].name} - Feature coming soon!`);
+           document.getElementById('debate-selection').classList.add('hidden');
+       }
+
+       function parseCommentary(text) {
+           const cleanText = text.replace(/^\d+\)\s*/gm, '').replace(/^\*\*\d+\)\s*/gm, '**');
+           const paragraphs = cleanText.split('\n\n').filter(p => p.trim());
+           const result = { opener: '', reasoning: '', modernLesson: '', insights: [], conclusion: '' };
+           
+           for (let i = 0; i < paragraphs.length; i++) {
+               const para = paragraphs[i].trim();
+               if (!para) continue;
+               
+               if (i === 0) {
+                   result.opener = para.replace(/^\*\*|\*\*$/g, '');
+               } else if (i === 1) {
+                   result.reasoning = para;
+               } else if (i === 2) {
+                   result.modernLesson = para;
+               } else if (i === paragraphs.length - 1) {
+                   result.conclusion = para;
+               } else {
+                   result.insights.push(para);
+               }
+           }
+           
+           return result;
+       }
+
+       async function getCommentary(storyIndex) {
+           if (!selectedPhilosopher) return;
+
+           const modal = document.getElementById('commentary-modal');
+           const content = document.getElementById('modal-content');
+           const progressBar = document.getElementById('progress-bar');
+           
+           modal.classList.remove('hidden');
+           document.getElementById('modal-philosopher-image').textContent = philosophers[selectedPhilosopher].image;
+           document.getElementById('modal-title').textContent = `${philosophers[selectedPhilosopher].name}'s Analysis`;
+           
+           content.innerHTML = `
+               <div class="text-center py-16">
+                   <div class="text-6xl mb-4 thinking-animation">${philosophers[selectedPhilosopher].image}</div>
+                   <p class="text-lg text-gray-600">Channeling philosophical wisdom...</p>
+               </div>
+           `;
+           
+           progressBar.style.width = '50%';
+
+           try {
+               const storiesResponse = await fetch('/api/news');
+               const stories = await storiesResponse.json();
+               const story = stories[storyIndex];
+               
+               const response = await fetch(`/api/commentary/${selectedPhilosopher}/${storyIndex}`);
+               const data = await response.json();
+               const parsed = parseCommentary(data.commentary);
+               const approvalScore = getApprovalRating(data.commentary);
+               
+               content.innerHTML = `
+                   <div class="bg-gray-50 p-4 rounded-xl mb-6">
+                       <h4 class="font-bold mb-3">📰 The Story</h4>
+                       <h5 class="font-semibold text-sm mb-2">${story.title}</h5>
+                       <p class="text-gray-600 text-sm mb-4">${story.description}</p>
+                       ${getApprovalIndicator(approvalScore)}
+                   </div>
+                   
+                   <div class="space-y-4">
+                       <div class="bg-gradient-to-r ${data.color} text-white p-5 rounded-xl">
+                           <h4 class="font-bold text-lg mb-3">💭 Opening Take</h4>
+                           <p class="text-lg font-medium leading-relaxed">${parsed.opener}</p>
+                       </div>
+                       
+                       ${parsed.reasoning ? `
+                       <div class="bg-white p-5 rounded-xl border-l-4 border-blue-400">
+                           <h4 class="font-bold text-lg mb-3">🧠 Why I Think This Way</h4>
+                           <p class="text-gray-700 leading-relaxed italic">${parsed.reasoning}</p>
+                       </div>
+                       ` : ''}
+                       
+                       ${parsed.insights.length ? `
+                       <div class="space-y-3">
+                           ${parsed.insights.map(insight => `
+                               <div class="bg-gray-50 p-4 rounded-xl border-l-4 border-purple-400">
+                                   <p class="text-gray-700 leading-relaxed">${insight}</p>
+                               </div>
+                           `).join('')}
+                       </div>
+                       ` : ''}
+                       
+                       ${parsed.conclusion ? `
+                       <div class="bg-gradient-to-r from-gray-800 to-gray-900 text-white p-5 rounded-xl">
+                           <h4 class="font-bold text-lg mb-3">⚡ Final Wisdom</h4>
+                           <p class="text-lg font-medium leading-relaxed">${parsed.conclusion}</p>
+                       </div>
+                       ` : ''}
+                   </div>
+               `;
+               
+               progressBar.style.width = '100%';
+               setTimeout(() => progressBar.style.width = '0%', 1500);
+               
+           } catch (error) {
+               content.innerHTML = '<div class="text-center py-8"><p class="text-red-600">Error generating analysis.</p></div>';
+           }
+       }
+
+       function toggleAudio() {
+           const text = document.querySelector('#modal-content').textContent;
+           
+           if (isPlaying) {
+               speechSynthesis.cancel();
+               isPlaying = false;
+               document.querySelector('button[onclick="toggleAudio()"]').textContent = '🔊 Listen';
+           } else {
+               const utterance = new SpeechSynthesisUtterance(text);
+               utterance.rate = 0.8;
+               utterance.onend = () => {
+                   isPlaying = false;
+                   document.querySelector('button[onclick="toggleAudio()"]').textContent = '🔊 Listen';
+               };
+               speechSynthesis.speak(utterance);
+               isPlaying = true;
+               document.querySelector('button[onclick="toggleAudio()"]').textContent = '⏸️ Stop';
+           }
+       }
+
+       function exportAnalysis() {
+           const content = document.querySelector('#modal-content').textContent;
+           const blob = new Blob([content], { type: 'text/plain' });
+           const url = URL.createObjectURL(blob);
+           const a = document.createElement('a');
+           a.href = url;
+           a.download = `philosophical-analysis-${Date.now()}.txt`;
+           a.click();
+           URL.revokeObjectURL(url);
+       }
+
+       function closeModal() {
+           document.getElementById('commentary-modal').classList.add('hidden');
+           if (isPlaying) {
+               speechSynthesis.cancel();
+               isPlaying = false;
+           }
+       }
+
+       function closeDebateModal() {
+           document.getElementById('debate-modal').classList.add('hidden');
+       }
+
+       loadNews();
+   </script>
+</body>
+</html>
