@@ -5,42 +5,45 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Philosophy Meets Current Events</title>
    <script src="https://cdn.tailwindcss.com"></script>
+   <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=SF+Pro+Text:wght@300;400;500;600&display=swap" rel="stylesheet">
+   <style>
+       .sf-pro { font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+       .sf-text { font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+   </style>
 </head>
-<body class="bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 min-h-screen">
+<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen sf-pro">
    <div class="container mx-auto px-4 py-8">
        <div class="text-center mb-8">
-           <h1 class="text-3xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
+           <h1 class="text-3xl font-medium text-gray-900 mb-2 sf-pro">
                Philosophy Meets Current Events
            </h1>
-           <p class="text-sm text-gray-700 font-medium">🔴 LIVE: What would history's greatest minds think about breaking news in 2025?</p>
+           <p class="text-sm text-gray-600 sf-text">What would history's greatest minds think about breaking news in 2025?</p>
        </div>
 
        <div class="grid grid-cols-12 gap-8">
            <div class="col-span-4">
-               <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6">
-                   <h2 class="text-xl font-bold text-gray-800 mb-4 text-center">Choose Your Philosopher</h2>
+               <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                   <h2 class="text-lg font-medium text-gray-900 mb-6 sf-pro">Choose Your Philosopher</h2>
                    
                    <div class="mb-6">
-                       <h3 class="text-lg font-semibold text-gray-700 mb-3">📜 Classical Thinkers</h3>
+                       <h3 class="text-sm font-medium text-gray-700 mb-3 sf-text">Classical Thinkers</h3>
                        <div class="grid grid-cols-2 gap-3">
                            {% for id, philosopher in philosophers.items() if philosopher.era == "classical" %}
-                           <div class="philosopher-card bg-gradient-to-br {{ philosopher.color }} backdrop-blur-sm p-3 rounded-2xl cursor-pointer text-white text-center shadow-xl" 
-                                onclick="selectPhilosopher('{{ id }}')">
-                               <div class="text-xl mb-1">{{ philosopher.image }}</div>
-                               <h3 class="font-semibold text-xs">{{ philosopher.name.split()[0] }}</h3>
+                           <div class="philosopher-card bg-gradient-to-br {{ philosopher.color }} p-3 rounded-xl cursor-pointer text-white text-center shadow-sm hover:shadow-md transition-all" 
+                                data-id="{{ id }}" onclick="selectPhilosopher('{{ id }}')">
+                               <h3 class="font-medium text-sm sf-text">{{ philosopher.name.split()[0] }}</h3>
                            </div>
                            {% endfor %}
                        </div>
                    </div>
                    
                    <div>
-                       <h3 class="text-lg font-semibold text-gray-700 mb-3">🎤 Contemporary Voices</h3>
+                       <h3 class="text-sm font-medium text-gray-700 mb-3 sf-text">Contemporary Voices</h3>
                        <div class="grid grid-cols-2 gap-3">
                            {% for id, philosopher in philosophers.items() if philosopher.era == "contemporary" %}
-                           <div class="philosopher-card bg-gradient-to-br {{ philosopher.color }} backdrop-blur-sm p-3 rounded-2xl cursor-pointer text-white text-center shadow-xl" 
-                                onclick="selectPhilosopher('{{ id }}')">
-                               <div class="text-xl mb-1">{{ philosopher.image }}</div>
-                               <h3 class="font-semibold text-xs">{{ philosopher.name.split()[0] }}</h3>
+                           <div class="philosopher-card bg-gradient-to-br {{ philosopher.color }} p-3 rounded-xl cursor-pointer text-white text-center shadow-sm hover:shadow-md transition-all" 
+                                data-id="{{ id }}" onclick="selectPhilosopher('{{ id }}')">
+                               <h3 class="font-medium text-sm sf-text">{{ philosopher.name.split()[0] }}</h3>
                            </div>
                            {% endfor %}
                        </div>
@@ -49,35 +52,102 @@
            </div>
 
            <div class="col-span-8">
-               <h2 class="text-xl font-bold mb-4">🔴 Breaking News</h2>
+               <h2 class="text-lg font-medium mb-4 sf-pro text-gray-900">Breaking News</h2>
                <div id="news-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
                    <div id="news-loading" class="col-span-full text-center py-16">
-                       <div class="animate-spin rounded-full h-16 w-16 border-4 border-blue-600 border-t-transparent mx-auto"></div>
-                       <p class="mt-6 text-lg text-gray-600">Loading headlines...</p>
+                       <div class="animate-spin rounded-full h-12 w-12 border-2 border-gray-300 border-t-gray-900 mx-auto"></div>
+                       <p class="mt-4 text-sm text-gray-600 sf-text">Loading headlines...</p>
                    </div>
                </div>
            </div>
        </div>
    </div>
 
-   <div id="commentary-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
-       <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[85vh] overflow-y-auto shadow-2xl">
-           <div class="sticky top-0 bg-white rounded-t-2xl border-b border-gray-200 p-4">
+   <!-- Enhanced Modal -->
+   <div id="enhanced-modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+       <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-xl">
+           <div class="sticky top-0 bg-white rounded-t-2xl border-b border-gray-100 p-6">
                <div class="flex justify-between items-start">
-                   <div class="flex items-center">
-                       <span id="modal-philosopher-image" class="text-3xl mr-3"></span>
-                       <h3 id="modal-title" class="text-xl font-bold text-gray-800"></h3>
+                   <div>
+                       <h3 id="modal-title" class="text-xl font-medium text-gray-900 sf-pro">Analysis</h3>
+                       <p id="modal-subtitle" class="text-sm text-gray-500 sf-text mt-1">Loading...</p>
+                       <div id="philosopher-bio" class="mt-3 text-xs text-gray-600 sf-text"></div>
                    </div>
-                   <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600 text-2xl">×</button>
+                   <button onclick="closeEnhancedModal()" class="text-gray-400 hover:text-gray-600 text-2xl sf-text">×</button>
                </div>
            </div>
-           <div id="modal-content" class="p-6"></div>
+           
+           <div id="modal-content" class="p-8">
+               <!-- Content will be loaded dynamically -->
+           </div>
        </div>
    </div>
 
    <script>
        let selectedPhilosopher = null;
-       const philosophers = {{ philosophers|tojson }};
+
+       function getPhilosopherBio(id) {
+           const bios = {
+               'aristotle': '384-322 BCE • Student of Plato, tutor to Alexander the Great • <a href="https://plato.stanford.edu/entries/aristotle/" class="text-blue-600 hover:underline">Stanford Encyclopedia</a>',
+               'plato': '428-348 BCE • Founded the Academy in Athens • <a href="https://plato.stanford.edu/entries/plato/" class="text-blue-600 hover:underline">Stanford Encyclopedia</a>',
+               'kant': '1724-1804 • German Enlightenment philosopher • <a href="https://plato.stanford.edu/entries/kant/" class="text-blue-600 hover:underline">Stanford Encyclopedia</a>',
+               'nietzsche': '1844-1900 • German philosopher and cultural critic • <a href="https://plato.stanford.edu/entries/nietzsche/" class="text-blue-600 hover:underline">Stanford Encyclopedia</a>',
+               'marx': '1818-1883 • German philosopher and economist • <a href="https://plato.stanford.edu/entries/marx/" class="text-blue-600 hover:underline">Stanford Encyclopedia</a>',
+               'mlk': '1929-1968 • American civil rights leader • <a href="https://kinginstitute.stanford.edu/" class="text-blue-600 hover:underline">King Institute</a>',
+               'jesus': 'c. 4 BCE - 30/33 CE • Central figure of Christianity • <a href="https://plato.stanford.edu/entries/jesus/" class="text-blue-600 hover:underline">Historical Jesus</a>',
+               'putin': 'b. 1952 • President of Russia since 1999 • <a href="https://en.kremlin.ru/" class="text-blue-600 hover:underline">Official Site</a>',
+               'chomsky': 'b. 1928 • American linguist and political activist • <a href="https://chomsky.info/" class="text-blue-600 hover:underline">Official Site</a>',
+               'trump': 'b. 1946 • 45th President of the United States • <a href="https://www.donaldjtrump.com/" class="text-blue-600 hover:underline">Official Site</a>',
+               'musk': 'b. 1971 • CEO of Tesla and SpaceX • <a href="https://twitter.com/elonmusk" class="text-blue-600 hover:underline">Twitter</a>'
+           };
+           return bios[id] || '';
+       }
+
+       function getSentimentColor(section, text) {
+           return getAnalysisType(section, text).color;
+       }
+
+       function getSentimentLabel(section, text) {
+           return getAnalysisType(section, text).label;
+       }
+
+       function getAnalysisType(section, text) {
+           const lowerText = text.toLowerCase();
+           
+           if (section === 'relevance') {
+               if (lowerText.includes('crisis') || lowerText.includes('urgent') || lowerText.includes('critical')) 
+                   return { color: 'bg-red-500', label: 'Urgent' };
+               if (lowerText.includes('opportunity') || lowerText.includes('potential') || lowerText.includes('promising'))
+                   return { color: 'bg-green-500', label: 'Optimistic' };
+               return { color: 'bg-blue-500', label: 'Analytical' };
+           }
+           
+           if (section === 'stance') {
+               if (lowerText.includes('oppose') || lowerText.includes('against') || lowerText.includes('dangerous'))
+                   return { color: 'bg-red-500', label: 'Opposes' };
+               if (lowerText.includes('support') || lowerText.includes('beneficial') || lowerText.includes('positive'))
+                   return { color: 'bg-green-500', label: 'Supports' };
+               return { color: 'bg-yellow-500', label: 'Cautious' };
+           }
+           
+           if (section === 'insights') {
+               if (lowerText.includes('reveals') || lowerText.includes('exposes') || lowerText.includes('uncovers'))
+                   return { color: 'bg-purple-500', label: 'Revealing' };
+               if (lowerText.includes('pattern') || lowerText.includes('trend') || lowerText.includes('connection'))
+                   return { color: 'bg-indigo-500', label: 'Connecting' };
+               return { color: 'bg-blue-500', label: 'Observant' };
+           }
+           
+           if (section === 'reasoning') {
+               if (lowerText.includes('logical') || lowerText.includes('rational') || lowerText.includes('evidence'))
+                   return { color: 'bg-green-500', label: 'Logical' };
+               if (lowerText.includes('strategic') || lowerText.includes('calculated') || lowerText.includes('tactical'))
+                   return { color: 'bg-orange-500', label: 'Strategic' };
+               return { color: 'bg-gray-500', label: 'Methodical' };
+           }
+           
+           return { color: 'bg-gray-400', label: 'Neutral' };
+       }
 
        async function loadNews() {
            const response = await fetch('/api/news');
@@ -92,22 +162,22 @@
 
            stories.forEach((story, index) => {
                const card = document.createElement('div');
-               card.className = 'bg-white/90 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300';
+               card.className = 'bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-200 border border-gray-100';
                card.innerHTML = `
-                   <div class="p-3">
-                       <div class="flex justify-between items-start mb-2">
-                           <span class="text-xs text-red-600 font-bold bg-red-100 px-2 py-1 rounded">🔴 LIVE</span>
-                           <span class="text-xs text-gray-500">${new Date(story.publishedAt).toLocaleDateString()}</span>
+                   <div class="p-4">
+                       <div class="flex justify-between items-start mb-3">
+                           <span class="text-xs text-red-600 font-medium bg-red-50 px-2 py-1 rounded sf-text">LIVE</span>
+                           <span class="text-xs text-gray-500 sf-text">${new Date(story.publishedAt).toLocaleDateString()}</span>
                        </div>
-                       <h3 class="font-bold text-xs mb-2 text-gray-900 leading-tight">${story.title}</h3>
-                       <p class="text-gray-600 text-xs mb-3 leading-relaxed">${(story.description || '').substring(0, 150)}...</p>
-                       <a href="${story.url}" target="_blank" class="text-xs text-blue-500 hover:underline mb-2 block">📰 Read full BBC article</a>
+                       <h3 class="font-medium text-sm mb-2 text-gray-900 leading-tight sf-pro">${story.title}</h3>
+                       <p class="text-gray-600 text-xs mb-3 leading-relaxed sf-text">${(story.description || '').substring(0, 120)}...</p>
+                       <a href="${story.url}" target="_blank" class="text-xs text-blue-600 hover:text-blue-700 mb-3 block sf-text">Read full article</a>
                        <button onclick="getCommentary(${index})" 
-                               class="w-full py-2 px-3 rounded-lg font-semibold text-xs transition-all ${!selectedPhilosopher ? 
-                               'bg-gray-300 text-gray-500 cursor-not-allowed' : 
-                               'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-lg'}"
+                               class="w-full py-2 px-3 rounded-lg font-medium text-xs transition-all sf-text ${!selectedPhilosopher ? 
+                               'bg-gray-100 text-gray-400 cursor-not-allowed' : 
+                               'bg-blue-600 text-white hover:bg-blue-700'}"
                                ${!selectedPhilosopher ? 'disabled' : ''}>
-                           <span class="button-text">${selectedPhilosopher ? 'Get ' + philosophers[selectedPhilosopher].name.split()[0] + ' Analysis' : 'Select Philosopher'}</span>
+                           <span class="button-text">${selectedPhilosopher ? `Get ${getPhilosopherName(selectedPhilosopher)} Analysis` : 'Select Philosopher'}</span>
                        </button>
                    </div>
                `;
@@ -119,100 +189,172 @@
            selectedPhilosopher = philosopherId;
            
            document.querySelectorAll('.philosopher-card').forEach(card => {
-               card.classList.remove('ring-4', 'ring-white', 'scale-105');
+               card.classList.remove('ring-2', 'ring-white', 'scale-105');
            });
-           event.target.closest('.philosopher-card').classList.add('ring-4', 'ring-white', 'scale-105');
-
+           document.querySelector(`[data-id="${philosopherId}"]`).classList.add('ring-2', 'ring-white', 'scale-105');
+           
            document.querySelectorAll('.button-text').forEach(btn => {
-               btn.textContent = 'Get ' + philosophers[philosopherId].name.split()[0] + ' Analysis';
+               btn.textContent = `Get ${getPhilosopherName(philosopherId)} Analysis`;
            });
            
            document.querySelectorAll('button[onclick^="getCommentary"]').forEach(btn => {
                btn.disabled = false;
-               btn.className = btn.className.replace('bg-gray-300 text-gray-500 cursor-not-allowed', 'bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:shadow-lg');
+               btn.className = btn.className.replace('bg-gray-100 text-gray-400 cursor-not-allowed', 'bg-blue-600 text-white hover:bg-blue-700');
            });
+       }
+
+       function getPhilosopherName(id) {
+           const names = {
+               'aristotle': 'Aristotle',
+               'plato': 'Plato', 
+               'kant': 'Kant',
+               'nietzsche': 'Nietzsche',
+               'marx': 'Marx',
+               'mlk': 'MLK',
+               'jesus': 'Jesus',
+               'putin': 'Putin',
+               'chomsky': 'Chomsky',
+               'trump': 'Trump',
+               'musk': 'Musk'
+           };
+           return names[id] || 'Philosopher';
        }
 
        async function getCommentary(storyIndex) {
            if (!selectedPhilosopher) return;
 
-           const modal = document.getElementById('commentary-modal');
-           const content = document.getElementById('modal-content');
+           const modal = document.getElementById('enhanced-modal');
+           const content = document.querySelector('#enhanced-modal .p-8');
+           
+           if (!content) {
+               console.error('Modal content element not found');
+               return;
+           }
            
            modal.classList.remove('hidden');
-           document.getElementById('modal-philosopher-image').textContent = philosophers[selectedPhilosopher].image;
-           document.getElementById('modal-title').textContent = philosophers[selectedPhilosopher].name + "'s Analysis";
            
-           content.innerHTML = '<div class="text-center py-16"><div class="text-6xl mb-4 animate-pulse">' + philosophers[selectedPhilosopher].image + '</div><p class="text-lg text-gray-600">Channeling philosophical wisdom...</p></div>';
+           content.innerHTML = '<div class="text-center py-16"><div class="animate-spin rounded-full h-12 w-12 border-2 border-gray-300 border-t-gray-900 mx-auto"></div><p class="text-sm text-gray-600 mt-4 sf-text">Analyzing...</p></div>';
 
            try {
                const storiesResponse = await fetch('/api/news');
                const stories = await storiesResponse.json();
                const story = stories[storyIndex];
                
-               const response = await fetch('/api/commentary/' + selectedPhilosopher + '/' + storyIndex);
+               const response = await fetch(`/api/commentary/${selectedPhilosopher}/${storyIndex}`);
                const data = await response.json();
                
+               if (data.error) {
+                   throw new Error(data.error);
+               }
+               
+               document.getElementById('modal-title').textContent = `${data.philosopher}'s Analysis`;
+               document.getElementById('modal-subtitle').textContent = 'Philosophical perspective';
+               
+               const bioInfo = getPhilosopherBio(selectedPhilosopher);
+               document.getElementById('philosopher-bio').innerHTML = bioInfo;
+               
                const sections = data.commentary.split(/(?=STANCE:|REASONING:|RELEVANCE:|INSIGHTS:|CONCLUSION:)/);
-               const conclusion = sections.find(s => s.includes('CONCLUSION:'))?.replace('CONCLUSION:', '').trim() || '';
+               const conclusion = sections.find(s => s.includes('CONCLUSION:'))?.replace('CONCLUSION:', '').trim() || data.commentary.substring(0, 200);
                const stance = sections.find(s => s.includes('STANCE:'))?.replace('STANCE:', '').trim() || '';
                const reasoning = sections.find(s => s.includes('REASONING:'))?.replace('REASONING:', '').trim() || '';
                const relevance = sections.find(s => s.includes('RELEVANCE:'))?.replace('RELEVANCE:', '').trim() || '';
                const insights = sections.find(s => s.includes('INSIGHTS:'))?.replace('INSIGHTS:', '').trim() || '';
                
-               content.innerHTML = `
+               let html = `
                    <div class="space-y-6">
-                       <div class="border-b border-gray-200 pb-4">
-                           <h4 class="text-sm text-gray-500 uppercase tracking-wide mb-2">Breaking News</h4>
-                           <h5 class="text-xl font-bold text-gray-900 mb-2">${story.title}</h5>
-                           <p class="text-gray-600">${story.description}</p>
+                       <div class="border-b border-gray-100 pb-4">
+                           <h4 class="text-xs text-gray-500 uppercase tracking-wide mb-2 sf-text">Breaking News • 2025</h4>
+                           <h5 class="text-lg font-medium text-gray-900 mb-2 sf-pro">${data.story.title}</h5>
+                           <p class="text-gray-600 sf-text">${data.story.description}</p>
                        </div>
                        
-                       <div class="bg-gradient-to-r ${data.color} text-white rounded-lg p-8">
-                           <div class="flex items-center justify-between mb-6">
-                               <div>
-                                   <span class="text-4xl">${data.image}</span>
-                                   <h3 class="text-2xl font-light mt-2">${data.philosopher}</h3>
+                       <div class="space-y-4">`;
+               
+               if (relevance) {
+                   const relevanceAnalysis = getAnalysisType('relevance', relevance);
+                   html += `
+                       <div class="rounded-xl p-6 border-l-4 border-blue-500 bg-blue-50">
+                           <div class="flex justify-between items-center mb-4">
+                               <h5 class="text-3xl font-bold text-blue-900 sf-pro">My Take</h5>
+                               <div class="flex items-center space-x-2">
+                                   <div class="w-3 h-3 rounded-full ${relevanceAnalysis.color}"></div>
+                                   <span class="text-sm text-blue-700 sf-text font-medium">${relevanceAnalysis.label}</span>
                                </div>
                            </div>
-                           
-                           <div class="bg-black/20 rounded-lg p-6 mb-6">
-                               <h4 class="text-lg font-medium text-white/90 mb-3">Final Judgment</h4>
-                               <p class="text-xl leading-relaxed font-light">${conclusion}</p>
-                           </div>
-                           
-                           <div class="grid gap-4">
-                               <div class="bg-white/10 rounded p-4">
-                                   <h5 class="font-medium text-white/80 mb-2">Position</h5>
-                                   <p class="text-white/95">${stance}</p>
-                               </div>
-                               
-                               <div class="bg-white/10 rounded p-4">
-                                   <h5 class="font-medium text-white/80 mb-2">Reasoning</h5>
-                                   <p class="text-white/95">${reasoning}</p>
-                               </div>
-                               
-                               <div class="bg-white/10 rounded p-4">
-                                   <h5 class="font-medium text-white/80 mb-2">2025 Relevance</h5>
-                                   <p class="text-white/95">${relevance}</p>
-                               </div>
-                               
-                               <div class="bg-white/10 rounded p-4">
-                                   <h5 class="font-medium text-white/80 mb-2">Key Insights</h5>
-                                   <p class="text-white/95">${insights}</p>
+                           <p class="text-xl text-blue-800 leading-relaxed sf-text">${relevance}</p>
+                       </div>`;
+               }
+               
+               if (stance) {
+                   const stanceAnalysis = getAnalysisType('stance', stance);
+                   html += `
+                       <div class="rounded-xl p-6 border-l-4 border-green-500 bg-green-50">
+                           <div class="flex justify-between items-center mb-4">
+                               <h5 class="text-lg font-semibold text-green-900 sf-pro">Position</h5>
+                               <div class="flex items-center space-x-2">
+                                   <div class="w-3 h-3 rounded-full ${stanceAnalysis.color}"></div>
+                                   <span class="text-sm text-green-700 sf-text font-medium">${stanceAnalysis.label}</span>
                                </div>
                            </div>
+                           <p class="text-base text-green-800 leading-relaxed sf-text">${stance}</p>
+                       </div>`;
+               }
+               
+               if (insights) {
+                   const insightsAnalysis = getAnalysisType('insights', insights);
+                   html += `
+                       <div class="rounded-xl p-6 border-l-4 border-purple-500 bg-purple-50">
+                           <div class="flex justify-between items-center mb-4">
+                               <h5 class="text-lg font-semibold text-purple-900 sf-pro">Key Insights</h5>
+                               <div class="flex items-center space-x-2">
+                                   <div class="w-3 h-3 rounded-full ${insightsAnalysis.color}"></div>
+                                   <span class="text-sm text-purple-700 sf-text font-medium">${insightsAnalysis.label}</span>
+                               </div>
+                           </div>
+                           <div class="text-base text-purple-800 leading-relaxed space-y-4 sf-text">`;
+                   
+                   const insightsList = insights.split(/(?=\d+\.)/).filter(item => item.trim());
+                   insightsList.forEach(item => {
+                       html += `<div>${item.trim()}</div>`;
+                   });
+                   
+                   html += `</div></div>`;
+               }
+               
+               if (reasoning) {
+                   const reasoningAnalysis = getAnalysisType('reasoning', reasoning);
+                   html += `
+                       <div class="rounded-xl p-6 border-l-4 border-orange-500 bg-orange-50">
+                           <div class="flex justify-between items-center mb-4">
+                               <h5 class="text-lg font-semibold text-orange-900 sf-pro">Reasoning</h5>
+                               <div class="flex items-center space-x-2">
+                                   <div class="w-3 h-3 rounded-full ${reasoningAnalysis.color}"></div>
+                                   <span class="text-sm text-orange-700 sf-text font-medium">${reasoningAnalysis.label}</span>
+                               </div>
+                           </div>
+                           <p class="text-base text-orange-800 leading-relaxed sf-text">${reasoning}</p>
+                       </div>`;
+               }
+               
+               html += `
+                       </div>
+                       
+                       <div class="bg-red-50 rounded-xl p-6 border-l-4 border-red-500">
+                           <h4 class="text-lg font-semibold text-red-900 mb-4 sf-pro">Final Assessment</h4>
+                           <p class="text-base text-red-800 leading-relaxed sf-text">${conclusion}</p>
                        </div>
                    </div>
                `;
                
+               content.innerHTML = html;
+               
            } catch (error) {
-               content.innerHTML = '<div class="text-center py-8"><p class="text-red-600">Error generating analysis.</p></div>';
+               content.innerHTML = '<div class="text-center py-8"><p class="text-red-600 sf-text">Error generating analysis.</p></div>';
            }
        }
 
-       function closeModal() {
-           document.getElementById('commentary-modal').classList.add('hidden');
+       function closeEnhancedModal() {
+           document.getElementById('enhanced-modal').classList.add('hidden');
        }
 
        loadNews();
