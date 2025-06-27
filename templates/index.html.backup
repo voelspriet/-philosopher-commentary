@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Philosophy Meets Current Events</title>
+   <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 min-h-screen">
+   <div class="container mx-auto px-4 py-8">
+       <div class="text-center mb-8">
+           <h1 class="text-4xl font-bold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
+               Philosophy Meets Current Events
+           </h1>
+           <p class="text-lg text-gray-600">What would history's greatest minds think about today's headlines?</p>
+       </div>
+
+       <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 mb-8">
+           <h2 class="text-2xl font-bold text-gray-800 mb-4 text-center">Choose Your Philosopher</h2>
+           
+           <div class="mb-6">
+               <h3 class="text-lg font-semibold text-gray-700 mb-3">📜 Classical Thinkers</h3>
+               <div class="grid grid-cols-3 md:grid-cols-6 gap-3">
+                   {% for id, philosopher in philosophers.items() if philosopher.era == "classical" %}
+                   <div class="bg-gradient-to-br {{ philosopher.color }} p-3 rounded-lg cursor-pointer text-white text-center shadow-lg" 
+                        onclick="selectPhilosopher('{{ id }}')">
+                       <div class="text-2xl mb-2">{{ philosopher.image }}</div>
+                       <h3 class="font-bold text-sm">{{ philosopher.name.split()[0] }}</h3>
+                   </div>
+                   {% endfor %}
+               </div>
+           </div>
+           
+           <div class="mb-6">
+               <h3 class="text-lg font-semibold text-gray-700 mb-3">🎤 Contemporary Voices</h3>
+               <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                   {% for id, philosopher in philosophers.items() if philosopher.era == "contemporary" %}
+                   <div class="bg-gradient-to-br {{ philosopher.color }} p-3 rounded-lg cursor-pointer text-white text-center shadow-lg" 
+                        onclick="selectPhilosopher('{{ id }}')">
+                       <div class="text-2xl mb-2">{{ philosopher.image }}</div>
+                       <h3 class="font-bold text-sm">{{ philosopher.name.split()[0] }}</h3>
+                   </div>
+                   {% endfor %}
+               </div>
+           </div>
+       </div>
+
+       <div id="news-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+           <div id="news-loading" class="col-span-full text-center py-16">
+               <div class="animate-spin rounded-full h-16 w-16 border-4 border-blue-600 border-t-transparent mx-auto"></div>
+               <p class="mt-6 text-xl text-gray-600">Loading headlines...</p>
+           </div>
+       </div>
+   </div>
+
+   <script>
+       let selectedPhilosopher = null;
+       const philosophers = {{ philosophers|tojson }};
+
+       async function loadNews() {
+           const response = await fetch('/api/news');
+           const stories = await response.json();
+           displayNews(stories);
+       }
+
+       function displayNews(stories) {
+           const container = document.getElementById('news-container');
+           const loadingEl = document.getElementById('news-loading');
+           if(loadingEl) loadingEl.remove();
+
+           stories.forEach((story, index) => {
+               const card = document.createElement('div');
+               card.className = 'bg-white rounded-xl shadow-lg p-4';
+               card.innerHTML = `
+                   <h3 class="font-bold text-sm mb-2">${story.title}</h3>
+                   <p class="text-gray-600 text-xs mb-4">${(story.description || '').substring(0, 100)}...</p>
+                   <button onclick="getCommentary(${index})" 
+                           class="w-full py-2 px-3 rounded-lg text-sm ${!selectedPhilosopher ? 
+                           'bg-gray-300 text-gray-500' : 
+                           'bg-blue-600 text-white'}"
+                           ${!selectedPhilosopher ? 'disabled' : ''}>
+                       ${selectedPhilosopher ? 'Get Analysis' : 'Select Philosopher'}
+                   </button>
+               `;
+               container.appendChild(card);
+           });
+       }
+
+       function selectPhilosopher(philosopherId) {
+           selectedPhilosopher = philosopherId;
+           document.querySelectorAll('button[onclick^="getCommentary"]').forEach(btn => {
+               btn.disabled = false;
+               btn.className = btn.className.replace('bg-gray-300 text-gray-500', 'bg-blue-600 text-white');
+               btn.textContent = 'Get Analysis';
+           });
+       }
+
+       async function getCommentary(storyIndex) {
+           if (!selectedPhilosopher) return;
+           
+           try {
+               const response = await fetch(`/api/commentary/${selectedPhilosopher}/${storyIndex}`);
+               const data = await response.json();
+               alert(`${data.philosopher} says: ${data.commentary.substring(0, 200)}...`);
+           } catch (error) {
+               alert('Error generating commentary');
+           }
+       }
+
+       loadNews();
+   </script>
+</body>
+</html>
