@@ -1,500 +1,800 @@
-<!DOCTYPE html>
+<div class="col-span-4">
+    <div class="bg-blue-600 rounded-lg shadow-lg border-2 border-<!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Philosophy Meets Current Events</title>
-   <script src="https://cdn.tailwindcss.com"></script>
-   <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=SF+Pro+Text:wght@300;400;500;600&display=swap" rel="stylesheet">
-   <style>
-       .sf-pro { font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
-       .sf-text { font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
-       .serif { font-family: 'Crimson Text', 'Times New Roman', serif; }
-       .mono { font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace; }
-       
-       .fade-in {
-           opacity: 0;
-           transform: translateY(20px);
-           animation: fadeInUp 0.6s ease-out forwards;
-       }
-       
-       .fade-in:nth-child(1) { animation-delay: 0.1s; }
-       .fade-in:nth-child(2) { animation-delay: 0.2s; }
-       .fade-in:nth-child(3) { animation-delay: 0.3s; }
-       .fade-in:nth-child(4) { animation-delay: 0.4s; }
-       .fade-in:nth-child(5) { animation-delay: 0.5s; }
-       
-       @keyframes fadeInUp {
-           to {
-               opacity: 1;
-               transform: translateY(0);
-           }
-       }
-       
-       .quote-marks::before {
-           content: '"';
-           font-size: 4rem;
-           position: absolute;
-           left: -2rem;
-           top: -1rem;
-           color: #e5e7eb;
-           font-family: serif;
-       }
-       
-       .philosopher-silhouette {
-           width: 60px;
-           height: 60px;
-           border-radius: 50%;
-           background: linear-gradient(135deg, #374151, #6b7280);
-           display: flex;
-           align-items: center;
-           justify-content: center;
-           color: white;
-           font-size: 24px;
-           font-weight: bold;
-       }
-   </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Philosophy Meets Current Events</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=SF+Pro+Text:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+.sf-pro { font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+.sf-text { font-family: 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif; }
+.serif { font-family: 'Crimson Text', 'Times New Roman', serif; }
+.mono { font-family: 'SF Mono', Monaco, 'Cascadia Code', monospace; }
+
+.fade-in {
+opacity: 0;
+transform: translateY(20px);
+animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.fade-in:nth-child(1) { animation-delay: 0.1s; }
+.fade-in:nth-child(2) { animation-delay: 0.2s; }
+.fade-in:nth-child(3) { animation-delay: 0.3s; }
+.fade-in:nth-child(4) { animation-delay: 0.4s; }
+.fade-in:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes fadeInUp {
+to {
+    opacity: 1;
+    transform: translateY(0);
+}
+}
+
+.quote-marks::before {
+content: '"';
+font-size: 4rem;
+position: absolute;
+left: -2rem;
+top: -1rem;
+color: #e5e7eb;
+font-family: serif;
+}
+
+.philosopher-silhouette {
+width: 60px;
+height: 60px;
+border-radius: 50%;
+background: linear-gradient(135deg, #374151, #6b7280);
+display: flex;
+align-items: center;
+justify-content: center;
+color: white;
+font-size: 24px;
+font-weight: bold;
+}
+
+.sample-quote {
+background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+border-left: 4px solid #3b82f6;
+transition: all 0.3s ease;
+}
+
+.sample-quote:hover {
+transform: translateY(-2px);
+box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.hero-gradient {
+background: linear-gradient(135deg, #a78bfa 0%, #c4b5fd 100%);
+}
+
+.news-card {
+transition: all 0.3s ease;
+border-left: 4px solid transparent;
+}
+
+.news-card:hover {
+border-left-color: #ef4444;
+transform: translateX(4px);
+box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+</style>
 </head>
-<body class="bg-gradient-to-br from-gray-50 to-gray-100 min-h-screen sf-pro">
-   <div class="container mx-auto px-4 py-12">
-       <div class="text-center mb-12">
-           <h1 class="text-4xl font-light serif text-gray-900 mb-3">
-               Philosophy Meets Current Events
-           </h1>
-           <p class="text-lg serif text-gray-600 mb-2">A Journal of Contemporary Philosophical Analysis</p>
-           <div class="w-24 h-px bg-gray-300 mx-auto mb-4"></div>
-           <p class="text-sm sf-text text-gray-500 uppercase tracking-wide">Est. 2025 • Daily Analysis</p>
-       </div>
+<body class="bg-white sf-pro">
+<!-- Hero Section with Sample Quotes -->
+<div class="bg-gradient-to-br from-violet-400 to-purple-400 text-white py-16 mb-0">
+<div class="container mx-auto px-4">
+<div class="text-center mb-12">
+    <h1 class="text-5xl font-light serif text-white mb-4">
+        Philosophy Meets Current Events
+    </h1>
+    <p class="text-xl sf-text opacity-90 mb-2">What would history's greatest minds think about today's headlines?</p>
+    <div class="w-24 h-px bg-white/30 mx-auto mb-6"></div>
+    <p class="text-sm sf-text opacity-70 uppercase tracking-wide">Real philosophers • Real analysis • Real insights</p>
+</div>
 
-       <div class="grid grid-cols-12 gap-12">
-           <div class="col-span-4">
-               <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
-                   <h2 class="text-xl serif font-medium text-gray-900 mb-8 text-center">Editorial Board</h2>
-                   
-                   <div class="mb-8">
-                       <h3 class="text-sm font-medium text-gray-700 mb-4 sf-text uppercase tracking-wide">Classical School</h3>
-                       <div class="grid grid-cols-2 gap-3">
-                           {% for id, philosopher in philosophers.items() if philosopher.era == "classical" %}
-                           <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100" 
-                                data-id="{{ id }}" onclick="selectPhilosopher('{{ id }}')">
-                               <div class="w-8 h-8 rounded-full bg-gray-200 mx-auto mb-2 flex items-center justify-center">
-                                   <span class="text-xs font-medium text-gray-600">{{ philosopher.name.split()[0][:2] }}</span>
-                               </div>
-                               <h3 class="font-medium text-xs serif text-gray-800">{{ philosopher.name.split()[0] }}</h3>
-                               <p class="text-xs text-gray-500 sf-text">{{ philosopher.name.split()[-1] if philosopher.name.split()|length > 2 else philosopher.name.split()[1] if philosopher.name.split()|length > 1 else '' }}</p>
-                           </div>
-                           {% endfor %}
-                       </div>
-                   </div>
-                   
-                   <div class="mb-8">
-                       <h3 class="text-sm font-medium text-gray-700 mb-4 sf-text uppercase tracking-wide">Contemporary Fellows</h3>
-                       <div class="grid grid-cols-2 gap-3">
-                           {% for id, philosopher in philosophers.items() if philosopher.era == "contemporary" %}
-                           <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100" 
-                                data-id="{{ id }}" onclick="selectPhilosopher('{{ id }}')">
-                               <div class="w-8 h-8 rounded-full bg-gray-200 mx-auto mb-2 flex items-center justify-center">
-                                   <span class="text-xs font-medium text-gray-600">{{ philosopher.name.split()[0][:2] }}</span>
-                               </div>
-                               <h3 class="font-medium text-xs serif text-gray-800">{{ philosopher.name.split()[0] }}</h3>
-                               <p class="text-xs text-gray-500 sf-text">{{ philosopher.name.split()[-1] if philosopher.name.split()|length > 1 else '' }}</p>
-                           </div>
-                           {% endfor %}
-                       </div>
-                   </div>
+<!-- Sample Philosophical Takes -->
+<div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <div class="bg-gradient-to-br from-amber-50/80 to-orange-50/60 backdrop-blur-sm rounded-lg p-6 border border-amber-200/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-1">
+        <div class="border-b border-amber-300/40 pb-3 mb-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full bg-amber-600 flex items-center justify-center mr-3 shadow-md">
+                        <span class="text-sm font-bold text-white">⚡</span>
+                    </div>
+                    <div>
+                        <h3 class="font-bold sf-pro text-lg text-amber-900">Friedrich Nietzsche</h3>
+                        <p class="text-xs text-amber-700 font-medium uppercase tracking-wide">The Iconoclast</p>
+                    </div>
+                </div>
+                <div class="text-xs text-amber-600 mono font-medium">EST. 1844</div>
+            </div>
+        </div>
+        <div class="relative">
+            <div class="absolute -left-2 top-0 text-6xl text-amber-300/40 font-serif leading-none">"</div>
+            <p class="text-sm sf-text text-amber-900 leading-relaxed pl-6 italic">This artificial intelligence is humanity's attempt to create its own übermensch - yet it reveals only our profound weakness and dependence on technological crutches.</p>
+            <div class="absolute -right-2 bottom-0 text-6xl text-amber-300/40 font-serif leading-none">"</div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-amber-300/30">
+            <p class="text-xs text-amber-700 font-medium uppercase tracking-wide">On AI Revolution • Modern Analysis</p>
+        </div>
+    </div>
 
-                   <div class="border-t pt-6">
-                       <button id="compare-btn" onclick="toggleCompareMode()" class="w-full py-3 px-4 rounded-lg font-medium text-sm bg-gray-800 text-white hover:bg-gray-900 transition-all sf-text disabled:bg-gray-300" disabled>
-                           Comparative Analysis
-                       </button>
-                       <p class="text-xs text-gray-500 mt-3 sf-text text-center">Select multiple perspectives</p>
-                       <div id="selected-count" class="text-xs text-gray-600 mt-2 sf-text text-center">0 selected</div>
-                   </div>
-               </div>
-           </div>
+    <div class="bg-gradient-to-br from-slate-50/80 to-gray-50/60 backdrop-blur-sm rounded-lg p-6 border border-slate-200/40 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-1">
+        <div class="border-b border-slate-300/40 pb-3 mb-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center mr-3 shadow-md">
+                        <span class="text-sm font-bold text-white">🔨</span>
+                    </div>
+                    <div>
+                        <h3 class="font-bold sf-pro text-lg text-slate-900">Karl Marx</h3>
+                        <p class="text-xs text-slate-700 font-medium uppercase tracking-wide">The Revolutionary</p>
+                    </div>
+                </div>
+                <div class="text-xs text-slate-600 mono font-medium">EST. 1818</div>
+            </div>
+        </div>
+        <div class="relative">
+            <div class="absolute -left-2 top-0 text-6xl text-slate-300/40 font-serif leading-none">"</div>
+            <p class="text-sm sf-text text-slate-900 leading-relaxed pl-6 italic">Bitcoin is the ultimate expression of capitalist alienation - imaginary wealth built on the exploitation of both human labor and planetary resources.</p>
+            <div class="absolute -right-2 bottom-0 text-6xl text-slate-300/40 font-serif leading-none">"</div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-300/30">
+            <p class="text-xs text-slate-700 font-medium uppercase tracking-wide">On Cryptocurrency • Economic Critique</p>
+        </div>
+    </div>
 
-           <div class="col-span-8">
-               <div class="flex items-center justify-between mb-8">
-                   <h2 class="text-2xl serif font-medium text-gray-900">Current Affairs</h2>
-                   <div class="text-xs text-gray-500 sf-text uppercase tracking-wide">Latest Analysis</div>
-               </div>
-               <div id="news-container" class="space-y-6">
-                   <div id="news-loading" class="text-center py-16">
-                       <div class="animate-spin rounded-full h-8 w-8 border border-gray-300 border-t-gray-800 mx-auto"></div>
-                       <p class="mt-4 text-sm text-gray-500 sf-text">Preparing analysis...</p>
-                   </div>
-               </div>
-           </div>
-       </div>
-   </div>
+    <div class="bg-gradient-to-br from-blue-50/80 to-indigo-50/60 backdrop-blur-sm rounded-lg p-6 border border-blue-200/40 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-1">
+        <div class="border-b border-blue-300/40 pb-3 mb-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center mr-3 shadow-md">
+                        <span class="text-sm font-bold text-white">📖</span>
+                    </div>
+                    <div>
+                        <h3 class="font-bold sf-pro text-lg text-blue-900">Plato</h3>
+                        <p class="text-xs text-blue-700 font-medium uppercase tracking-wide">The Idealist</p>
+                    </div>
+                </div>
+                <div class="text-xs text-blue-600 mono font-medium">EST. 428 BCE</div>
+            </div>
+        </div>
+        <div class="relative">
+            <div class="absolute -left-2 top-0 text-6xl text-blue-300/40 font-serif leading-none">"</div>
+            <p class="text-sm sf-text text-blue-900 leading-relaxed pl-6 italic">These digital caves show us only shadows of reality, while the masses mistake algorithmic echoes for truth itself.</p>
+            <div class="absolute -right-2 bottom-0 text-6xl text-blue-300/40 font-serif leading-none">"</div>
+        </div>
+        <div class="mt-4 pt-3 border-t border-blue-300/30">
+            <p class="text-xs text-blue-700 font-medium uppercase tracking-wide">On Social Media • Philosophical Truth</p>
+        </div>
+    </div>
+</div>
 
-   <!-- Modal -->
-   <div id="enhanced-modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
-       <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-xl">
-           <div class="sticky top-0 bg-white rounded-t-2xl border-b border-gray-100 p-6">
-               <div class="flex justify-between items-start">
-                   <div>
-                       <h3 id="modal-title" class="text-xl font-medium text-gray-900 sf-pro">Analysis</h3>
-                       <p id="modal-subtitle" class="text-sm text-gray-500 sf-text mt-1">Loading...</p>
-                       <div id="philosopher-bio" class="mt-3 text-xs text-gray-600 sf-text"></div>
-                   </div>
-                   <button onclick="closeEnhancedModal()" class="text-gray-400 hover:text-gray-600 text-2xl sf-text">×</button>
-               </div>
-           </div>
-           
-           <div id="modal-content" class="p-8">
-               <!-- Content will be loaded dynamically -->
-           </div>
-       </div>
-   </div>
+<div class="text-center mt-8">
+    <p class="text-lg sf-text opacity-90">↓ Choose your philosopher and discover their take on today's news ↓</p>
+</div>
+</div>
+</div>
+</div>
 
-   <script>
-       let selectedPhilosophers = [];
-       let compareMode = false;
+<!-- Footer with Author Credit -->
+<footer class="bg-gray-50 border-t border-gray-200 py-8">
+<div class="container mx-auto px-4">
+<div class="text-center">
+    <p class="text-sm text-gray-600 sf-text">
+        Created by <strong>Henk van Ess</strong> (2025) • 
+        <a href="https://philosophers.news" class="text-blue-600 hover:text-blue-800 font-medium">Philosophers.news</a>
+    </p>
+    <p class="text-xs text-gray-500 sf-text mt-2">
+        What would history's greatest minds think about today's headlines?
+    </p>
+</div>
+</div>
+</footer>
 
-       function selectPhilosopher(philosopherId) {
-           if (!compareMode) {
-               selectedPhilosophers = [philosopherId];
-               document.querySelectorAll('.philosopher-card').forEach(card => {
-                   card.classList.remove('ring-2', 'ring-white', 'scale-105', 'ring-4', 'ring-yellow-400');
-               });
-               document.querySelector('[data-id="' + philosopherId + '"]').classList.add('ring-2', 'ring-white', 'scale-105');
-               
-               updateButtons();
-           } else {
-               const card = document.querySelector('[data-id="' + philosopherId + '"]');
-               if (selectedPhilosophers.includes(philosopherId)) {
-                   selectedPhilosophers = selectedPhilosophers.filter(id => id !== philosopherId);
-                   card.classList.remove('ring-4', 'ring-yellow-400');
-               } else if (selectedPhilosophers.length < 3) {
-                   selectedPhilosophers.push(philosopherId);
-                   card.classList.add('ring-4', 'ring-yellow-400');
-               }
-               updateCompareUI();
-           }
-       }
+<div class="bg-white py-12 -mt-0">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-12 gap-12">
+<div class="col-span-4">
+    <div class="bg-white/95 backdrop-blur-sm rounded-lg shadow-xl border-2 border-amber-400 p-8 sticky top-4 max-h-[calc(100vh-2rem)] overflow-y-auto">
+        <h2 class="text-xl serif font-medium text-gray-900 mb-6 text-center">Pick a philosopher above to start analyzing news</h2>
+        
+        <div class="mb-8">
+            <h3 class="text-sm font-medium text-gray-700 mb-4 sf-text uppercase tracking-wide">Classical Voices</h3>
+            <div class="grid grid-cols-2 gap-3">
+                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-amber-300 hover:bg-amber-50" 
+                     data-id="aristotle" onclick="selectPhilosopher('aristotle')">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 mx-auto mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-sm font-bold text-white">🏛</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Aristotle</h3>
+                    <p class="text-xs text-amber-600 sf-text font-medium">The Empiricist</p>
+                </div>
+                
+                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-blue-300 hover:bg-blue-50" 
+                     data-id="plato" onclick="selectPhilosopher('plato')">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 mx-auto mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-sm font-bold text-white">📖</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Plato</h3>
+                    <p class="text-xs text-blue-600 sf-text font-medium">The Idealist</p>
+                </div>
+                
+                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-gray-400 hover:bg-gray-50" 
+                     data-id="kant" onclick="selectPhilosopher('kant')">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gray-400 to-gray-600 mx-auto mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-sm font-bold text-white">⚖</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Kant</h3>
+                    <p class="text-xs text-gray-600 sf-text font-medium">The Moralist</p>
+                </div>
+                
+                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-purple-300 hover:bg-purple-50" 
+                     data-id="nietzsche" onclick="selectPhilosopher('nietzsche')">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 mx-auto mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-sm font-bold text-white">⚡</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Nietzsche</h3>
+                    <p class="text-xs text-purple-600 sf-text font-medium">The Iconoclast</p>
+                </div>
+                
+                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-red-300 hover:bg-red-50" 
+                     data-id="marx" onclick="selectPhilosopher('marx')">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-red-400 to-red-600 mx-auto mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-sm font-bold text-white">🔨</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Marx</h3>
+                    <p class="text-xs text-red-600 sf-text font-medium">The Revolutionary</p>
+                </div>
+                
+                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-green-300 hover:bg-green-50" 
+                     data-id="mlk" onclick="selectPhilosopher('mlk')">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 mx-auto mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-sm font-bold text-white">✊🏿</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">MLK Jr.</h3>
+                    <p class="text-xs text-green-600 sf-text font-medium">The Justice Fighter</p>
+                </div>
+                
+                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-sky-300 hover:bg-sky-50" 
+                     data-id="jesus" onclick="selectPhilosopher('jesus')">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-sky-400 to-sky-600 mx-auto mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-sm font-bold text-white">✝</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Jesus</h3>
+                    <p class="text-xs text-sky-600 sf-text font-medium">The Teacher</p>
+                </div>
+                
+                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-slate-300 hover:bg-slate-50" 
+                     data-id="clausewitz" onclick="selectPhilosopher('clausewitz')">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-slate-500 to-slate-700 mx-auto mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-sm font-bold text-white">⚔️</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Clausewitz</h3>
+                    <p class="text-xs text-slate-600 sf-text font-medium">The War Strategist</p>
+                </div>
+                
+                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-gray-300 hover:bg-gray-50" 
+                     data-id="heidegger" onclick="selectPhilosopher('heidegger')">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 mx-auto mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-sm font-bold text-white">🌀</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Heidegger</h3>
+                    <p class="text-xs text-gray-600 sf-text font-medium">Being & Time</p>
+                </div>
+                
+                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-amber-300 hover:bg-amber-50" 
+                     data-id="goethe" onclick="selectPhilosopher('goethe')">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 mx-auto mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-sm font-bold text-white">🌟</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Goethe</h3>
+                    <p class="text-xs text-amber-600 sf-text font-medium">The Universal Genius</p>
+                </div>
+                
+                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-indigo-300 hover:bg-indigo-50" 
+                     data-id="schopenhauer" onclick="selectPhilosopher('schopenhauer')">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-700 mx-auto mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-sm font-bold text-white">🎭</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Schopenhauer</h3>
+                    <p class="text-xs text-indigo-600 sf-text font-medium">The Pessimist</p>
+                </div>
+                
+                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-rose-300 hover:bg-rose-50" 
+                     data-id="hugo" onclick="selectPhilosopher('hugo')">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-rose-500 to-pink-600 mx-auto mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-sm font-bold text-white">🗽</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Hugo</h3>
+                    <p class="text-xs text-rose-600 sf-text font-medium">The Romantic</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-8">
+            <h3 class="text-sm font-medium text-gray-700 mb-4 sf-text uppercase tracking-wide">Great Minds</h3>
+            <div class="grid grid-cols-2 gap-3">
+                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-indigo-300 hover:bg-indigo-50" 
+                     data-id="confucius" onclick="selectPhilosopher('confucius')">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-600 mx-auto mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-sm font-bold text-white">🏮</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Confucius</h3>
+                    <p class="text-xs text-indigo-600 sf-text font-medium">The Wise Sage</p>
+                </div>
+                
+                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-emerald-300 hover:bg-emerald-50" 
+                     data-id="gandhi" onclick="selectPhilosopher('gandhi')">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-green-600 mx-auto mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-sm font-bold text-white">☮</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Gandhi</h3>
+                    <p class="text-xs text-emerald-600 sf-text font-medium">The Peaceful Rebel</p>
+                </div>
+                
+                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-yellow-300 hover:bg-yellow-50" 
+                     data-id="buddha" onclick="selectPhilosopher('buddha')">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 mx-auto mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-sm font-bold text-white">☸</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Buddha</h3>
+                    <p class="text-xs text-yellow-600 sf-text font-medium">The Enlightened</p>
+                </div>
+                
+                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-teal-300 hover:bg-teal-50" 
+                     data-id="socrates" onclick="selectPhilosopher('socrates')">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-cyan-600 mx-auto mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-sm font-bold text-white">🤔</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Socrates</h3>
+                    <p class="text-xs text-teal-600 sf-text font-medium">The Questioner</p>
+                </div>
+            </div>
+        </div>
 
-       function updateButtons() {
-           document.querySelectorAll('.button-text').forEach(btn => {
-               if (selectedPhilosophers.length > 0) {
-                   btn.textContent = 'Analyze';
-               } else {
-                   btn.textContent = 'Select Analyst';
-               }
-           });
-           
-           document.querySelectorAll('button[onclick^="getCommentary"]').forEach(btn => {
-               if (selectedPhilosophers.length > 0) {
-                   btn.disabled = false;
-                   btn.className = 'px-4 py-2 text-xs font-medium sf-text bg-gray-800 text-white hover:bg-gray-900 rounded transition-all';
-               } else {
-                   btn.disabled = true;
-                   btn.className = 'px-4 py-2 text-xs font-medium sf-text border border-gray-300 text-gray-700 hover:bg-gray-50 rounded transition-all disabled:opacity-50 disabled:cursor-not-allowed';
-               }
-           });
-       }
+        <div class="mb-8">
+            <h3 class="text-sm font-medium text-gray-700 mb-4 sf-text uppercase tracking-wide">Modern Voices</h3>
+            <div class="grid grid-cols-2 gap-3">
+                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-orange-300 hover:bg-orange-50" 
+                     data-id="chomsky" onclick="selectPhilosopher('chomsky')">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-red-600 mx-auto mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-sm font-bold text-white">📣</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Chomsky</h3>
+                    <p class="text-xs text-orange-600 sf-text font-medium">The Media Critic</p>
+                </div>
+                
+                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-red-300 hover:bg-red-50" 
+                     data-id="trump" onclick="selectPhilosopher('trump')">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-red-400 to-blue-500 mx-auto mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-sm font-bold text-white">🇺🇸</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Trump</h3>
+                    <p class="text-xs text-red-600 sf-text font-medium">The Dealmaker</p>
+                </div>
+                
+                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-purple-300 hover:bg-purple-50" 
+                     data-id="musk" onclick="selectPhilosopher('musk')">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-pink-600 mx-auto mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-sm font-bold text-white">🚀</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Musk</h3>
+                    <p class="text-xs text-purple-600 sf-text font-medium">The Innovator</p>
+                </div>
+                
+                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-gray-400 hover:bg-gray-50" 
+                     data-id="putin" onclick="selectPhilosopher('putin')">
+                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gray-500 to-slate-700 mx-auto mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-sm font-bold text-white">🐻</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Putin</h3>
+                    <p class="text-xs text-gray-600 sf-text font-medium">The Strategist</p>
+                </div>
+            </div>
+        </div>
 
-       function toggleCompareMode() {
-           compareMode = !compareMode;
-           const btn = document.getElementById('compare-btn');
-           
-           if (compareMode) {
-               btn.textContent = 'Exit Compare Mode';
-               btn.className = 'w-full py-2 px-3 rounded-lg font-medium text-sm bg-red-600 text-white hover:bg-red-700 transition-all sf-text';
-               selectedPhilosophers = [];
-               document.querySelectorAll('.philosopher-card').forEach(card => {
-                   card.classList.remove('ring-2', 'ring-white', 'scale-105', 'ring-4', 'ring-yellow-400');
-               });
-               updateCompareUI();
-           } else {
-               btn.textContent = 'Compare Selected';
-               btn.className = 'w-full py-2 px-3 rounded-lg font-medium text-sm bg-purple-600 text-white hover:bg-purple-700 transition-all sf-text disabled:bg-gray-300';
-               btn.disabled = true;
-               selectedPhilosophers = [];
-               document.querySelectorAll('.philosopher-card').forEach(card => {
-                   card.classList.remove('ring-4', 'ring-yellow-400');
-               });
-               updateButtons();
-           }
-       }
+        <div class="border-t border-gray-200 pt-6">
+            <div id="selection-status" class="text-center mb-4 p-3 bg-amber-100 border-2 border-amber-400 rounded-lg">
+                <p class="text-sm sf-text text-amber-800 font-medium">👆 Pick a philosopher above to start analyzing news</p>
+            </div>
+        </div>
+    </div>
+</div>
 
-       function updateCompareUI() {
-           const countEl = document.getElementById('selected-count');
-           countEl.textContent = selectedPhilosophers.length + ' selected';
-           
-           if (compareMode) {
-               document.querySelectorAll('button[onclick^="getCommentary"]').forEach(btn => {
-                   if (selectedPhilosophers.length >= 2) {
-                       btn.innerHTML = '<span class="button-text">Compare Analyses</span>';
-                       btn.disabled = false;
-                       btn.className = 'w-full py-2 px-3 rounded-lg font-medium text-xs transition-all sf-text bg-purple-600 text-white hover:bg-purple-700';
-                   } else {
-                       btn.innerHTML = '<span class="button-text">Select 2-3 for Compare</span>';
-                       btn.disabled = true;
-                       btn.className = 'w-full py-2 px-3 rounded-lg font-medium text-xs transition-all sf-text bg-gray-100 text-gray-400 cursor-not-allowed';
-                   }
-               });
-           }
-       }
+<div class="col-span-8">
+    <div class="flex items-center justify-between mb-8">
+        <div>
+            <h2 class="text-5xl serif font-medium text-gray-900 mb-3">How would great thinkers respond to today's news?</h2>
+            <p class="text-lg text-gray-600 sf-text">Fresh perspectives on today's most important stories</p>
+        </div>
+        <div class="text-sm text-red-600 sf-text uppercase tracking-wide font-medium bg-red-50 px-4 py-2 rounded-full">Live Feed</div>
+    </div>
+    
+    <div id="news-container" class="space-y-6">
+        <div id="news-loading" class="text-center py-16">
+            <div class="animate-spin rounded-full h-12 w-12 border-2 border-gray-300 border-t-gray-800 mx-auto"></div>
+            <p class="mt-4 text-lg text-gray-600 sf-text">Loading today's headlines...</p>
+            <p class="text-sm text-gray-500 sf-text mt-2">Preparing philosophical analysis...</p>
+        </div>
+    </div>
+</div>
+</div>
+</div>
 
-       function getHistoricalContext(id) {
-           const contexts = {
-               'aristotle': 'During Aristotle\'s era (384-322 BCE), political power was concentrated in city-states ruled by kings or oligarchies. His concept of mixed government and rule of law would find this concentration of executive power deeply concerning for democratic stability.',
-               'plato': 'Plato witnessed the decline of Athenian democracy and Socrates\' execution by democratic mob rule. His philosopher-king ideal suggests he would view this expansion of executive power as evidence of democracy\'s inherent flaws.',
-               'kant': 'Writing during the Enlightenment, Kant emphasized constitutional limits on power and the categorical imperative. He would likely view this decision as violating the principle that actions should be universalizable.',
-               'nietzsche': 'Nietzsche lived through the rise of German nationalism and criticized mass democracy. He would see this as evidence of the "herd mentality" and the need for strong individual leadership beyond conventional morality.',
-               'marx': 'Marx analyzed how capitalist systems concentrate power in ruling classes. He would interpret this decision as the bourgeois state apparatus protecting elite interests against democratic constraints.',
-               'mlk': 'Dr. King fought against institutional power structures that oppressed marginalized communities. He would likely view expanded executive power as a threat to civil rights and democratic participation.',
-               'jesus': 'Jesus taught about power serving others rather than self-interest. He would likely emphasize how political power should be used to help the vulnerable rather than consolidate authority.',
-               'putin': 'Having consolidated power in Russia since 1999, Putin understands executive authority as necessary for national stability and sovereignty against external threats.',
-               'chomsky': 'Chomsky has consistently criticized the concentration of power in both corporate and government institutions as fundamentally anti-democratic.',
-               'trump': 'As a former president, Trump would likely view expanded executive power as necessary for effective governance and protecting national interests.',
-               'musk': 'Musk\'s experience with regulatory agencies would inform his view on whether executive power helps or hinders innovation and progress.'
-           };
-           return contexts[id] || 'This philosopher would bring their unique historical perspective to this contemporary political development.';
-       }
+<!-- Modal -->
+<div id="enhanced-modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
+<div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-xl flex flex-col">
+<div class="bg-white rounded-t-2xl border-b border-gray-100 p-6 flex-shrink-0">
+    <div class="flex justify-between items-start">
+        <div>
+            <h3 id="modal-title" class="text-xl font-medium text-gray-900 sf-pro">Analysis</h3>
+            <p id="modal-subtitle" class="text-sm text-gray-500 sf-text mt-1">Loading...</p>
+            <div id="philosopher-bio" class="mt-3 text-xs text-gray-600 sf-text"></div>
+        </div>
+        <button onclick="closeEnhancedModal()" class="text-gray-400 hover:text-gray-600 text-2xl sf-text">×</button>
+    </div>
+</div>
 
-       function getPhilosopherBio(id) {
-           const bios = {
-               'aristotle': '384-322 BCE • Student of Plato, tutor to Alexander the Great • <a href="https://plato.stanford.edu/entries/aristotle/" class="text-blue-600 hover:underline">Stanford Encyclopedia</a>',
-               'plato': '428-348 BCE • Founded the Academy in Athens • <a href="https://plato.stanford.edu/entries/plato/" class="text-blue-600 hover:underline">Stanford Encyclopedia</a>',
-               'kant': '1724-1804 • German Enlightenment philosopher • <a href="https://plato.stanford.edu/entries/kant/" class="text-blue-600 hover:underline">Stanford Encyclopedia</a>',
-               'nietzsche': '1844-1900 • German philosopher and cultural critic • <a href="https://plato.stanford.edu/entries/nietzsche/" class="text-blue-600 hover:underline">Stanford Encyclopedia</a>',
-               'marx': '1818-1883 • German philosopher and economist • <a href="https://plato.stanford.edu/entries/marx/" class="text-blue-600 hover:underline">Stanford Encyclopedia</a>',
-               'mlk': '1929-1968 • American civil rights leader • <a href="https://kinginstitute.stanford.edu/" class="text-blue-600 hover:underline">King Institute</a>',
-               'jesus': 'c. 4 BCE - 30/33 CE • Central figure of Christianity • <a href="https://plato.stanford.edu/entries/jesus/" class="text-blue-600 hover:underline">Historical Jesus</a>',
-               'putin': 'b. 1952 • President of Russia since 1999 • <a href="https://en.kremlin.ru/" class="text-blue-600 hover:underline">Official Site</a>',
-               'chomsky': 'b. 1928 • American linguist and political activist • <a href="https://chomsky.info/" class="text-blue-600 hover:underline">Official Site</a>',
-               'trump': 'b. 1946 • 45th President of the United States • <a href="https://www.donaldjtrump.com/" class="text-blue-600 hover:underline">Official Site</a>',
-               'musk': 'b. 1971 • CEO of Tesla and SpaceX • <a href="https://twitter.com/elonmusk" class="text-blue-600 hover:underline">Twitter</a>'
-           };
-           return bios[id] || '';
-       }
+<div id="modal-content" class="p-8 overflow-y-auto flex-1">
+    <!-- Content will be loaded dynamically -->
+</div>
+</div>
+</div>
 
-       function getPhilosopherName(id) {
-           const names = {
-               'aristotle': 'Aristotle', 'plato': 'Plato', 'kant': 'Kant',
-               'nietzsche': 'Nietzsche', 'marx': 'Marx', 'mlk': 'MLK',
-               'jesus': 'Jesus', 'putin': 'Putin', 'chomsky': 'Chomsky',
-               'trump': 'Trump', 'musk': 'Musk'
-           };
-           return names[id] || 'Philosopher';
-       }
+<script>
+let selectedPhilosophers = [];
 
-       async function loadNews() {
-           try {
-               const response = await fetch('/api/news');
-               const stories = await response.json();
-               displayNews(stories);
-           } catch (error) {
-               console.error('Error loading news:', error);
-               document.getElementById('news-container').innerHTML = '<div class="col-span-full text-center py-8"><p class="text-red-600">Error loading news</p></div>';
-           }
-       }
+function selectPhilosopher(philosopherId) {
+selectedPhilosophers = [philosopherId];
+document.querySelectorAll('.philosopher-card').forEach(card => {
+    card.classList.remove('ring-2', 'ring-blue-500', 'bg-blue-50');
+});
+const selectedCard = document.querySelector('[data-id="' + philosopherId + '"]');
+selectedCard.classList.add('ring-2', 'ring-blue-500', 'bg-blue-50');
 
-       function displayNews(stories) {
-           const container = document.getElementById('news-container');
-           const loadingEl = document.getElementById('news-loading');
-           if(loadingEl) loadingEl.remove();
+updateSelectionStatus();
+updateButtons();
+}
 
-           stories.forEach((story, index) => {
-               const card = document.createElement('div');
-               card.className = 'bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-all duration-200';
-               card.innerHTML = 
-                   '<div class="flex justify-between items-start mb-4">' +
-                   '<div class="flex items-center">' +
-                   '<div class="w-2 h-2 bg-red-500 rounded-full mr-3"></div>' +
-                   '<span class="text-xs text-red-600 font-medium sf-text uppercase tracking-wide">Current</span>' +
-                   '</div>' +
-                   '<span class="text-xs text-gray-500 sf-text">' + new Date(story.publishedAt).toLocaleDateString() + '</span>' +
-                   '</div>' +
-                   '<h3 class="text-lg font-medium serif text-gray-900 leading-tight mb-3">' + story.title + '</h3>' +
-                   '<p class="text-sm sf-text text-gray-600 leading-relaxed mb-4">' + (story.description || '').substring(0, 200) + '...</p>' +
-                   '<div class="flex justify-between items-center">' +
-                   '<a href="' + story.url + '" target="_blank" class="text-xs text-gray-500 hover:text-gray-700 sf-text">Read source →</a>' +
-                   '<button onclick="getCommentary(' + index + ')" class="px-4 py-2 text-xs font-medium sf-text border border-gray-300 text-gray-700 hover:bg-gray-50 rounded transition-all disabled:opacity-50 disabled:cursor-not-allowed" disabled>' +
-                   '<span class="button-text">Select Analyst</span>' +
-                   '</button>' +
-                   '</div>';
-               container.appendChild(card);
-           });
-           
-           updateButtons();
-       }
+function updateSelectionStatus() {
+const statusEl = document.getElementById('selection-status');
+if (selectedPhilosophers.length > 0) {
+    const names = selectedPhilosophers.map(id => getPhilosopherName(id));
+    statusEl.innerHTML = '<p class="text-sm sf-text text-green-800 font-medium">✅ ' + names.join(', ') + ' selected! Now click any news story below.</p>';
+    statusEl.className = 'text-center mb-4 p-3 bg-green-100 border-2 border-green-400 rounded-lg';
+} else {
+    statusEl.innerHTML = '<p class="text-sm sf-text text-amber-800 font-medium">👆 Pick a philosopher above to start analyzing news</p>';
+    statusEl.className = 'text-center mb-4 p-3 bg-amber-100 border-2 border-amber-400 rounded-lg';
+}
+}
 
-       async function getCommentary(storyIndex) {
-           if (selectedPhilosophers.length === 0) return;
-           
-           const modal = document.getElementById('enhanced-modal');
-           const content = document.getElementById('modal-content');
-           
-           modal.classList.remove('hidden');
-           content.innerHTML = '<div class="text-center py-16"><div class="animate-spin rounded-full h-12 w-12 border-2 border-gray-300 border-t-gray-900 mx-auto"></div><p class="text-sm text-gray-600 mt-4 sf-text">Analyzing...</p></div>';
+function getPhilosopherName(id) {
+const names = {
+    'aristotle': 'Aristotle', 'plato': 'Plato', 'kant': 'Kant',
+    'nietzsche': 'Nietzsche', 'marx': 'Marx', 'jesus': 'Jesus',
+    'mlk': 'MLK Jr.', 'clausewitz': 'Clausewitz', 'heidegger': 'Heidegger',
+    'goethe': 'Goethe', 'schopenhauer': 'Schopenhauer', 'hugo': 'Hugo',
+    'putin': 'Putin', 'chomsky': 'Chomsky', 'trump': 'Trump', 'musk': 'Musk', 
+    'confucius': 'Confucius', 'gandhi': 'Gandhi', 'buddha': 'Buddha', 
+    'socrates': 'Socrates'
+};
+return names[id] || 'Philosopher';
+}
 
-           try {
-               const storiesResponse = await fetch('/api/news');
-               const stories = await storiesResponse.json();
-               const story = stories[storyIndex];
-               
-               if (compareMode && selectedPhilosophers.length >= 2) {
-                   await generateCompareView(story, storyIndex);
-               } else {
-                   await generateSingleView(story, storyIndex);
-               }
-           } catch (error) {
-               content.innerHTML = '<div class="text-center py-8"><p class="text-red-600 sf-text">Error generating analysis.</p></div>';
-           }
-       }
+function updateButtons() {
+const selectedName = selectedPhilosophers.length > 0 ? getPhilosopherName(selectedPhilosophers[0]) : null;
 
-       async function generateSingleView(story, storyIndex) {
-           const philosopherId = selectedPhilosophers[0];
-           const response = await fetch('/api/commentary/' + philosopherId + '/' + storyIndex);
-           const data = await response.json();
-           
-           document.getElementById('modal-title').textContent = data.philosopher + "'s Analysis";
-           document.getElementById('modal-subtitle').textContent = 'Philosophical perspective';
-           document.getElementById('philosopher-bio').innerHTML = getPhilosopherBio(philosopherId);
-           
-           const sections = data.commentary.split(/(?=STANCE:|REASONING:|RELEVANCE:|INSIGHTS:|CONCLUSION:)/);
-           const conclusion = (sections.find(s => s.includes('CONCLUSION:')) || '').replace('CONCLUSION:', '').trim() || data.commentary.substring(0, 200);
-           const stance = (sections.find(s => s.includes('STANCE:')) || '').replace('STANCE:', '').trim();
-           const reasoning = (sections.find(s => s.includes('REASONING:')) || '').replace('REASONING:', '').trim();
-           const relevance = (sections.find(s => s.includes('RELEVANCE:')) || '').replace('RELEVANCE:', '').trim();
-           const insights = (sections.find(s => s.includes('INSIGHTS:')) || '').replace('INSIGHTS:', '').trim();
-           
-           let html = '<div class="space-y-8">' +
-               // Academic citation header
-               '<div class="border-b border-gray-200 pb-6">' +
-               '<div class="flex items-center mb-4">' +
-               '<div class="philosopher-silhouette">' + data.philosopher.split(' ').map(n => n[0]).join('') + '</div>' +
-               '<div class="ml-4">' +
-               '<h3 class="text-xl font-bold serif text-gray-900">' + data.philosopher + '</h3>' +
-               '<p class="text-sm text-gray-600 sf-text">Philosophical Analysis</p>' +
-               '</div>' +
-               '</div>' +
-               '<div class="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">' +
-               '<h4 class="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2 mono">Source Material</h4>' +
-               '<h5 class="text-base font-medium text-gray-900 serif mb-1">' + data.story.title + '</h5>' +
-               '<p class="text-sm text-gray-700 sf-text leading-relaxed mb-2">' + data.story.description + '</p>' +
-               '<p class="text-xs text-gray-500 mono">BBC News • 2025</p>' +
-               '</div>' +
-               '</div>' +
-               
-               // Pull quote from conclusion
-               '<div class="text-center py-8 fade-in">' +
-               '<div class="relative inline-block quote-marks">' +
-               '<p class="text-2xl font-light serif text-gray-800 leading-relaxed max-w-2xl">' + conclusion + '</p>' +
-               '</div>' +
-               '<p class="text-sm text-gray-500 mt-4 serif">— Final Assessment of ' + data.philosopher + '</p>' +
-               '</div>' +
-               
-               // Academic sections
-               '<div class="space-y-6">';
-           
-           if (relevance) {
-               html += '<div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 fade-in">' +
-                   '<h5 class="text-xl font-bold serif text-gray-900 mb-4">Contemporary Analysis</h5>' +
-                   '<p class="text-base sf-text text-gray-800 leading-relaxed">' + relevance + '</p>' +
-                   '</div>';
-           }
-           
-           if (stance) {
-               html += '<div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 fade-in">' +
-                   '<h5 class="text-xl font-bold serif text-gray-900 mb-4">Philosophical Position</h5>' +
-                   '<p class="text-base sf-text text-gray-800 leading-relaxed">' + stance + '</p>' +
-                   '</div>';
-           }
-           
-           if (insights) {
-               html += '<div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 fade-in">' +
-                   '<h5 class="text-xl font-bold serif text-gray-900 mb-6">Key Observations</h5>' +
-                   '<div class="space-y-4">';
-               
-               const insightsList = insights.split(/(?=\d+\.)/).filter(item => item.trim());
-               insightsList.forEach((item, index) => {
-                   const cleanedItem = item.trim().replace(/^\d+\.\s*/, '');
-                   html += '<div class="flex items-start">' +
-                       '<span class="mono text-sm font-medium text-gray-400 mr-4 mt-1">' + (index + 1).toString().padStart(2, '0') + '</span>' +
-                       '<p class="text-base sf-text text-gray-800 leading-relaxed">' + cleanedItem + '</p>' +
-                       '</div>';
-               });
-               
-               html += '</div></div>';
-           }
-           
-           if (reasoning) {
-               html += '<div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 fade-in">' +
-                   '<h5 class="text-xl font-bold serif text-gray-900 mb-4">Philosophical Framework</h5>' +
-                   '<p class="text-base sf-text text-gray-800 leading-relaxed">' + reasoning + '</p>' +
-                   '</div>';
-           }
-           
-           // Historical context
-           html += '<div class="bg-gray-50 p-8 rounded-xl border border-gray-200 fade-in">' +
-               '<h5 class="text-xl font-bold serif text-gray-900 mb-4">Historical Context</h5>' +
-               '<p class="text-sm sf-text text-gray-700 leading-relaxed">' + 
-               getHistoricalContext(philosopherId) +
-               '</p>' +
-               '</div>';
-           
-           html += '</div></div>';
-           
-           document.getElementById('modal-content').innerHTML = html;
-       }
+document.querySelectorAll('.analyze-btn').forEach(btn => {
+    if (selectedPhilosophers.length > 0) {
+        btn.disabled = false;
+        btn.className = 'analyze-btn px-6 py-3 text-sm font-medium sf-text bg-blue-600 text-white hover:bg-blue-700 rounded-lg transition-all shadow-sm';
+        btn.innerHTML = `<span class="button-text">What would ${selectedName} say?</span>`;
+    } else {
+        btn.disabled = true;
+        btn.className = 'analyze-btn px-6 py-3 text-sm font-medium sf-text border border-gray-300 text-gray-500 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed';
+        btn.innerHTML = '<span class="button-text">Select Philosopher First</span>';
+    }
+});
+}
 
-       async function generateCompareView(story, storyIndex) {
-           document.getElementById('modal-title').textContent = 'Comparative Analysis';
-           document.getElementById('modal-subtitle').textContent = selectedPhilosophers.length + ' perspectives';
-           
-           const analyses = await Promise.all(
-               selectedPhilosophers.map(async (philosopherId) => {
-                   const response = await fetch('/api/commentary/' + philosopherId + '/' + storyIndex);
-                   const data = await response.json();
-                   return { philosopherId, data };
-               })
-           );
-           
-           let html = '<div class="space-y-6">' +
-               '<div class="border-b border-gray-100 pb-4">' +
-               '<h4 class="text-xs text-gray-500 uppercase tracking-wide mb-2 sf-text">Breaking News • 2025</h4>' +
-               '<h5 class="text-lg font-medium text-gray-900 mb-2 sf-pro">' + story.title + '</h5>' +
-               '<p class="text-gray-600 sf-text">' + story.description + '</p>' +
-               '</div><div class="grid gap-6">';
-           
-           analyses.forEach(({ philosopherId, data }) => {
-               const sections = data.commentary.split(/(?=STANCE:|REASONING:|RELEVANCE:|INSIGHTS:|CONCLUSION:)/);
-               const relevance = (sections.find(s => s.includes('RELEVANCE:')) || '').replace('RELEVANCE:', '').trim();
-               const stance = (sections.find(s => s.includes('STANCE:')) || '').replace('STANCE:', '').trim();
-               
-               html += '<div class="border rounded-xl p-6 bg-gray-50">' +
-                   '<h3 class="text-lg font-semibold text-gray-900 sf-pro mb-4">' + data.philosopher + '</h3>';
-               
-               if (relevance) {
-                   html += '<div class="mb-4">' +
-                       '<h4 class="text-sm font-medium text-gray-700 mb-2 sf-pro">Take</h4>' +
-                       '<p class="text-sm text-gray-800 sf-text">' + relevance.substring(0, 150) + '...</p>' +
-                       '</div>';
-               }
-               
-               if (stance) {
-                   html += '<div>' +
-                       '<h4 class="text-sm font-medium text-gray-700 mb-2 sf-pro">Position</h4>' +
-                       '<p class="text-sm text-gray-800 sf-text">' + stance.substring(0, 150) + '...</p>' +
-                       '</div>';
-               }
-               
-               html += '</div>';
-           });
-           
-           html += '</div></div>';
-           document.getElementById('modal-content').innerHTML = html;
-       }
+function toggleCompareMode() {
+compareMode = !compareMode;
+const btn = document.getElementById('compare-btn');
 
-       function closeEnhancedModal() {
-           document.getElementById('enhanced-modal').classList.add('hidden');
-       }
+if (compareMode) {
+    btn.textContent = 'Exit Compare Mode';
+    btn.className = 'w-full py-3 px-4 rounded-lg font-medium text-sm bg-red-600 text-white hover:bg-red-700 transition-all sf-text';
+    selectedPhilosophers = [];
+    document.querySelectorAll('.philosopher-card').forEach(card => {
+        card.classList.remove('ring-2', 'ring-blue-500', 'bg-blue-50', 'ring-4', 'ring-yellow-400', 'bg-yellow-50');
+    });
+    updateCompareUI();
+} else {
+    btn.textContent = 'Comparative Analysis Mode';
+    btn.className = 'w-full py-3 px-4 rounded-lg font-medium text-sm bg-gray-800 text-white hover:bg-gray-900 transition-all sf-text';
+    selectedPhilosophers = [];
+    document.querySelectorAll('.philosopher-card').forEach(card => {
+        card.classList.remove('ring-4', 'ring-yellow-400', 'bg-yellow-50');
+    });
+    updateSelectionStatus();
+    updateButtons();
+}
+}
 
-       loadNews();
-   </script>
+function updateCompareUI() {
+const statusEl = document.getElementById('selection-status');
+statusEl.innerHTML = '<p class="text-sm sf-text text-purple-600 font-medium">' + selectedPhilosophers.length + ' philosophers selected for comparison</p>';
+
+if (compareMode) {
+    document.querySelectorAll('.analyze-btn').forEach(btn => {
+        if (selectedPhilosophers.length >= 2) {
+            btn.innerHTML = '<span class="button-text">Compare ' + selectedPhilosophers.length + ' Perspectives</span>';
+            btn.disabled = false;
+            btn.className = 'analyze-btn px-6 py-3 text-sm font-medium sf-text bg-purple-600 text-white hover:bg-purple-700 rounded-lg transition-all shadow-sm';
+        } else {
+            btn.innerHTML = '<span class="button-text">Select 2-3 for Comparison</span>';
+            btn.disabled = true;
+            btn.className = 'analyze-btn px-6 py-3 text-sm font-medium sf-text bg-gray-100 text-gray-400 rounded-lg transition-all cursor-not-allowed';
+        }
+    });
+}
+}
+
+async function loadNews() {
+try {
+    const response = await fetch('/api/news');
+    const stories = await response.json();
+    displayNews(stories);
+} catch (error) {
+    console.error('Error loading news:', error);
+    document.getElementById('news-container').innerHTML = '<div class="text-center py-8"><p class="text-red-600">Error loading news. Please refresh the page.</p></div>';
+}
+}
+
+function displayNews(stories) {
+const container = document.getElementById('news-container');
+const loadingEl = document.getElementById('news-loading');
+if(loadingEl) loadingEl.remove();
+
+stories.forEach((story, index) => {
+    const card = document.createElement('div');
+    card.className = 'news-card bg-white rounded-xl shadow-sm border border-gray-200 p-8 hover:shadow-lg transition-all duration-300';
+    card.innerHTML = `
+        <div class="flex justify-between items-start mb-6">
+            <div class="flex items-center">
+                <div class="w-3 h-3 bg-red-500 rounded-full mr-3 animate-pulse"></div>
+                <span class="text-sm text-red-600 font-medium sf-text uppercase tracking-wide">Breaking</span>
+            </div>
+            <span class="text-sm text-gray-500 sf-text">${new Date(story.publishedAt).toLocaleDateString()}</span>
+        </div>
+        
+        <h3 class="text-2xl font-medium serif text-gray-900 leading-tight mb-4">${story.title}</h3>
+        <p class="text-base sf-text text-gray-700 leading-relaxed mb-6">${(story.description || '').substring(0, 300)}...</p>
+        
+        <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+            <a href="${story.url}" target="_blank" class="text-sm text-blue-600 hover:text-blue-800 sf-text font-medium">Read full BBC story →</a>
+            <button onclick="getCommentary(${index})" class="analyze-btn px-6 py-3 text-sm font-medium sf-text border-2 border-blue-300 text-blue-700 hover:bg-blue-50 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:border-gray-300 disabled:text-gray-500 disabled:bg-gray-50" disabled>
+                <span class="button-text">👈 Select Philosopher First</span>
+            </button>
+        </div>
+    `;
+    container.appendChild(card);
+});
+
+updateButtons();
+}
+
+async function getCommentary(storyIndex) {
+if (selectedPhilosophers.length === 0) return;
+
+const modal = document.getElementById('enhanced-modal');
+const content = document.getElementById('modal-content');
+
+modal.classList.remove('hidden');
+content.innerHTML = '<div class="text-center py-16"><div class="animate-spin rounded-full h-12 w-12 border-2 border-gray-300 border-t-gray-900 mx-auto"></div><p class="text-lg text-gray-600 mt-4 sf-text">Generating philosophical analysis...</p><p class="text-sm text-gray-500 sf-text mt-2">This may take a moment</p></div>';
+
+try {
+    const storiesResponse = await fetch('/api/news');
+    const stories = await storiesResponse.json();
+    const story = stories[storyIndex];
+    
+    await generateSingleView(story, storyIndex);
+} catch (error) {
+    content.innerHTML = '<div class="text-center py-8"><p class="text-red-600 sf-text text-lg">Error generating analysis. Please try again.</p></div>';
+}
+}
+
+async function generateSingleView(story, storyIndex) {
+const philosopherId = selectedPhilosophers[0];
+const response = await fetch('/api/commentary/' + philosopherId + '/' + storyIndex);
+const data = await response.json();
+
+document.getElementById('modal-title').textContent = data.philosopher + "'s Analysis";
+document.getElementById('modal-subtitle').textContent = 'Philosophical perspective on current events';
+document.getElementById('philosopher-bio').innerHTML = getPhilosopherBio(philosopherId);
+
+const sections = data.commentary.split(/(?=STANCE:|REASONING:|RELEVANCE:|INSIGHTS:|CONCLUSION:)/);
+const conclusion = (sections.find(s => s.includes('CONCLUSION:')) || '').replace('CONCLUSION:', '').trim() || data.commentary.substring(0, 200);
+const stance = (sections.find(s => s.includes('STANCE:')) || '').replace('STANCE:', '').trim();
+const reasoning = (sections.find(s => s.includes('REASONING:')) || '').replace('REASONING:', '').trim();
+const relevance = (sections.find(s => s.includes('RELEVANCE:')) || '').replace('RELEVANCE:', '').trim();
+const insights = (sections.find(s => s.includes('INSIGHTS:')) || '').replace('INSIGHTS:', '').trim();
+
+let html = `<div class="space-y-8">
+    <div class="border-b border-gray-200 pb-6">
+        <div class="flex items-center mb-4">
+            <div class="philosopher-silhouette">${data.philosopher.split(' ').map(n => n[0]).join('')}</div>
+            <div class="ml-4">
+                <h3 class="text-xl font-bold serif text-gray-900">${data.philosopher}</h3>
+                <p class="text-sm text-gray-600 sf-text">Philosophical Analysis</p>
+            </div>
+        </div>
+        <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-red-400">
+            <h4 class="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2 mono">Breaking News Analysis</h4>
+            <h5 class="text-lg font-medium text-gray-900 serif mb-2">${data.story.title}</h5>
+            <p class="text-sm text-gray-700 sf-text leading-relaxed mb-2">${data.story.description}</p>
+            <p class="text-xs text-gray-500 mono">BBC News • ${new Date().toLocaleDateString()}</p>
+        </div>
+    </div>
+    
+    <div class="text-center py-8 fade-in">
+        <div class="relative inline-block quote-marks">
+            <p class="text-2xl font-light serif text-gray-800 leading-relaxed max-w-2xl">${conclusion}</p>
+        </div>
+        <p class="text-sm text-gray-500 mt-4 serif">— ${data.philosopher}</p>
+    </div>
+    
+    <div class="space-y-6">`;
+
+if (relevance) {
+    html += `<div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 fade-in">
+        <h5 class="text-xl font-bold serif text-gray-900 mb-4">Contemporary Analysis</h5>
+        <p class="text-base sf-text text-gray-800 leading-relaxed">${relevance}</p>
+    </div>`;
+}
+
+if (stance) {
+    html += `<div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 fade-in">
+        <h5 class="text-xl font-bold serif text-gray-900 mb-4">Philosophical Position</h5>
+        <p class="text-base sf-text text-gray-800 leading-relaxed">${stance}</p>
+    </div>`;
+}
+
+if (insights) {
+    html += `<div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 fade-in">
+        <h5 class="text-xl font-bold serif text-gray-900 mb-6">Key Insights</h5>
+        <div class="space-y-4">`;
+    
+    const insightsList = insights.split(/(?=\d+\.)/).filter(item => item.trim());
+    insightsList.forEach((item, index) => {
+        const cleanedItem = item.trim().replace(/^\d+\.\s*/, '');
+        html += `<div class="flex items-start">
+            <span class="mono text-sm font-medium text-gray-400 mr-4 mt-1">${(index + 1).toString().padStart(2, '0')}</span>
+            <p class="text-base sf-text text-gray-800 leading-relaxed">${cleanedItem}</p>
+        </div>`;
+    });
+    
+    html += `</div></div>`;
+}
+
+if (reasoning) {
+    html += `<div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 fade-in">
+        <h5 class="text-xl font-bold serif text-gray-900 mb-4">Philosophical Framework</h5>
+        <p class="text-base sf-text text-gray-800 leading-relaxed">${reasoning}</p>
+    </div>`;
+}
+
+html += `</div></div>`;
+
+document.getElementById('modal-content').innerHTML = html;
+}
+
+async function generateCompareView(story, storyIndex) {
+document.getElementById('modal-title').textContent = 'Comparative Philosophical Analysis';
+document.getElementById('modal-subtitle').textContent = `${selectedPhilosophers.length} perspectives on current events`;
+
+const analyses = await Promise.all(
+    selectedPhilosophers.map(async (philosopherId) => {
+        const response = await fetch('/api/commentary/' + philosopherId + '/' + storyIndex);
+        const data = await response.json();
+        return { philosopherId, data };
+    })
+);
+
+let html = `<div class="space-y-6">
+    <div class="border-b border-gray-100 pb-6">
+        <h4 class="text-sm text-red-600 uppercase tracking-wide mb-2 sf-text font-medium">Breaking News Analysis</h4>
+        <h5 class="text-2xl font-medium text-gray-900 mb-3 serif">${story.title}</h5>
+        <p class="text-gray-700 sf-text leading-relaxed">${story.description}</p>
+    </div>
+    <div class="grid gap-6">`;
+
+analyses.forEach(({ philosopherId, data }) => {
+    const sections = data.commentary.split(/(?=STANCE:|REASONING:|RELEVANCE:|INSIGHTS:|CONCLUSION:)/);
+    const relevance = (sections.find(s => s.includes('RELEVANCE:')) || '').replace('RELEVANCE:', '').trim();
+    const stance = (sections.find(s => s.includes('STANCE:')) || '').replace('STANCE:', '').trim();
+    
+    html += `<div class="border-2 border-gray-100 rounded-xl p-6 bg-gradient-to-br from-gray-50 to-white">
+        <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold">
+                ${data.philosopher.split(' ').map(n => n[0]).join('')}
+            </div>
+            <div class="ml-4">
+                <h3 class="text-lg font-semibold text-gray-900 sf-pro">${data.philosopher}</h3>
+                <p class="text-sm text-gray-600 sf-text">${getPhilosopherDescriptor(philosopherId)}</p>
+            </div>
+        </div>`;
+    
+    if (relevance) {
+        html += `<div class="mb-4">
+            <h4 class="text-sm font-medium text-gray-700 mb-2 sf-pro">Analysis</h4>
+            <p class="text-sm text-gray-800 sf-text leading-relaxed">${relevance.substring(0, 200)}...</p>
+        </div>`;
+    }
+    
+    if (stance) {
+        html += `<div>
+            <h4 class="text-sm font-medium text-gray-700 mb-2 sf-pro">Key Position</h4>
+            <p class="text-sm text-gray-800 sf-text leading-relaxed">${stance.substring(0, 200)}...</p>
+        </div>`;
+    }
+    
+    html += `</div>`;
+});
+
+html += `</div></div>`;
+document.getElementById('modal-content').innerHTML = html;
+}
+
+function getPhilosopherDescriptor(id) {
+const descriptors = {
+    'aristotle': 'The Empirical Analyst', 'plato': 'The Idealistic Theorist', 'kant': 'The Moral Philosopher',
+    'nietzsche': 'The Cultural Critic', 'marx': 'The Revolutionary Thinker', 'jesus': 'The Spiritual Teacher',
+    'mlk': 'The Justice Fighter', 'clausewitz': 'The Master of War', 'heidegger': 'The Being Philosopher',
+    'goethe': 'The Universal Genius', 'schopenhauer': 'The Great Pessimist', 'hugo': 'The Romantic Humanist',
+    'putin': 'The Strategic Realist', 'chomsky': 'The Media Critic', 'trump': 'The Populist Leader', 
+    'musk': 'The Tech Innovator', 'confucius': 'The Wise Sage', 'gandhi': 'The Peaceful Rebel', 
+    'buddha': 'The Enlightened One', 'socrates': 'The Great Questioner'
+};
+return descriptors[id] || 'Philosophical Thinker';
+}
+
+function getPhilosopherBio(id) {
+const bios = {
+    'aristotle': '384-322 BCE • Student of Plato, tutor to Alexander the Great<br><a href="https://plato.stanford.edu/entries/aristotle/" class="text-blue-600 hover:underline text-xs" target="_blank">Stanford Encyclopedia</a> • <a href="https://www.britannica.com/biography/Aristotle" class="text-blue-600 hover:underline text-xs" target="_blank">Britannica</a> • <a href="https://iep.utm.edu/aristotle/" class="text-blue-600 hover:underline text-xs" target="_blank">IEP</a>',
+    'plato': '428-348 BCE • Founded the Academy in Athens<br><a href="https://plato.stanford.edu/entries/plato/" class="text-blue-600 hover:underline text-xs" target="_blank">Stanford Encyclopedia</a> • <a href="https://www.britannica.com/biography/Plato" class="text-blue-600 hover:underline text-xs" target="_blank">Britannica</a> • <a href="https://iep.utm.edu/plato/" class="text-blue-600 hover:underline text-xs" target="_blank">IEP</a>',
+    'kant': '1724-1804 • German Enlightenment philosopher<br><a href="https://plato.stanford.edu/entries/kant/" class="text-blue-600 hover:underline text-xs" target="_blank">Stanford Encyclopedia</a> • <a href="https://www.britannica.com/biography/Immanuel-Kant" class="text-blue-600 hover:underline text-xs" target="_blank">Britannica</a> • <a href="https://iep.utm.edu/kant/" class="text-blue-600 hover:underline text-xs" target="_blank">IEP</a>',
+    'nietzsche': '1844-1900 • German philosopher and cultural critic<br><a href="https://plato.stanford.edu/entries/nietzsche/" class="text-blue-600 hover:underline text-xs" target="_blank">Stanford Encyclopedia</a> • <a href="https://www.britannica.com/biography/Friedrich-Nietzsche" class="text-blue-600 hover:underline text-xs" target="_blank">Britannica</a> • <a href="https://iep.utm.edu/nietzsch/" class="text-blue-600 hover:underline text-xs" target="_blank">IEP</a>',
+    'marx': '1818-1883 • German philosopher and economist<br><a href="https://plato.stanford.edu/entries/marx/" class="text-blue-600 hover:underline text-xs" target="_blank">Stanford Encyclopedia</a> • <a href="https://www.britannica.com/biography/Karl-Marx" class="text-blue-600 hover:underline text-xs" target="_blank">Britannica</a> • <a href="https://www.marxists.org/" class="text-blue-600 hover:underline text-xs" target="_blank">Marxists.org</a>',
+    'jesus': 'c. 4 BCE - 30/33 CE • Central figure of Christianity<br><a href="https://plato.stanford.edu/entries/jesus/" class="text-blue-600 hover:underline text-xs" target="_blank">Stanford Encyclopedia</a> • <a href="https://www.britannica.com/biography/Jesus" class="text-blue-600 hover:underline text-xs" target="_blank">Britannica</a> • <a href="https://www.biblegateway.com/" class="text-blue-600 hover:underline text-xs" target="_blank">Bible Gateway</a>',
+    'mlk': '1929-1968 • American civil rights leader and activist<br><a href="https://kinginstitute.stanford.edu/" class="text-blue-600 hover:underline text-xs" target="_blank">King Institute</a> • <a href="https://www.nps.gov/malu/index.htm" class="text-blue-600 hover:underline text-xs" target="_blank">National Park Service</a> • <a href="https://thekingcenter.org/" class="text-blue-600 hover:underline text-xs" target="_blank">The King Center</a>',
+    'clausewitz': '1780-1831 • Prussian general and military theorist<br><a href="https://www.britannica.com/biography/Carl-von-Clausewitz" class="text-blue-600 hover:underline text-xs" target="_blank">Britannica</a> • <a href="https://www.clausewitz.com/" class="text-blue-600 hover:underline text-xs" target="_blank">Clausewitz.com</a> • <a href="https://www.gutenberg.org/ebooks/1946" class="text-blue-600 hover:underline text-xs" target="_blank">On War (Free)</a>',
+    'heidegger': '1889-1976 • German existentialist philosopher<br><a href="https://plato.stanford.edu/entries/heidegger/" class="text-blue-600 hover:underline text-xs" target="_blank">Stanford Encyclopedia</a> • <a href="https://www.britannica.com/biography/Martin-Heidegger" class="text-blue-600 hover:underline text-xs" target="_blank">Britannica</a> • <a href="https://iep.utm.edu/heidegge/" class="text-blue-600 hover:underline text-xs" target="_blank">IEP</a>',
+    'goethe': '1749-1832 • German writer, scientist, and statesman<br><a href="https://www.britannica.com/biography/Johann-Wolfgang-von-Goethe" class="text-blue-600 hover:underline text-xs" target="_blank">Britannica</a> • <a href="https://www.gutenberg.org/ebooks/author/30" class="text-blue-600 hover:underline text-xs" target="_blank">Works (Free)</a> • <a href="https://www.goethe.de/en" class="text-blue-600 hover:underline text-xs" target="_blank">Goethe Institute</a>',
+    'schopenhauer': '1788-1860 • German philosopher of pessimism<br><a href="https://plato.stanford.edu/entries/schopenhauer/" class="text-blue-600 hover:underline text-xs" target="_blank">Stanford Encyclopedia</a> • <a href="https://www.britannica.com/biography/Arthur-Schopenhauer" class="text-blue-600 hover:underline text-xs" target="_blank">Britannica</a> • <a href="https://www.gutenberg.org/ebooks/author/871" class="text-blue-600 hover:underline text-xs" target="_blank">Works (Free)</a>',
+    'hugo': '1802-1885 • French novelist, poet, and dramatist<br><a href="https://www.britannica.com/biography/Victor-Hugo" class="text-blue-600 hover:underline text-xs" target="_blank">Britannica</a> • <a href="https://www.gutenberg.org/ebooks/author/85" class="text-blue-600 hover:underline text-xs" target="_blank">Works (Free)</a> • <a href="https://maisonsvictorhugo.paris.fr/en" class="text-blue-600 hover:underline text-xs" target="_blank">Hugo Museums</a>',
+    'putin': 'b. 1952 • President of Russia since 1999<br><a href="https://en.kremlin.ru/" class="text-blue-600 hover:underline text-xs" target="_blank">Official Site</a> • <a href="https://www.britannica.com/biography/Vladimir-Putin" class="text-blue-600 hover:underline text-xs" target="_blank">Britannica</a> • <a href="https://www.bbc.com/news/world-europe-15047823" class="text-blue-600 hover:underline text-xs" target="_blank">BBC Profile</a>',
+    'chomsky': 'b. 1928 • American linguist and political activist<br><a href="https://chomsky.info/" class="text-blue-600 hover:underline text-xs" target="_blank">Official Site</a> • <a href="https://www.britannica.com/biography/Noam-Chomsky" class="text-blue-600 hover:underline text-xs" target="_blank">Britannica</a> • <a href="https://web.mit.edu/linguistics/people/faculty/chomsky/" class="text-blue-600 hover:underline text-xs" target="_blank">MIT Profile</a>',
+    'trump': 'b. 1946 • 45th President of the United States<br><a href="https://www.donaldjtrump.com/" class="text-blue-600 hover:underline text-xs" target="_blank">Official Site</a> • <a href="https://www.britannica.com/biography/Donald-Trump" class="text-blue-600 hover:underline text-xs" target="_blank">Britannica</a> • <a href="https://www.whitehouse.gov/about-the-white-house/presidents/donald-j-trump/" class="text-blue-600 hover:underline text-xs" target="_blank">White House</a>',
+    'musk': 'b. 1971 • CEO of Tesla and SpaceX<br><a href="https://www.tesla.com/elon-musk" class="text-blue-600 hover:underline text-xs" target="_blank">Tesla Bio</a> • <a href="https://www.spacex.com/" class="text-blue-600 hover:underline text-xs" target="_blank">SpaceX</a> • <a href="https://x.com/elonmusk" class="text-blue-600 hover:underline text-xs" target="_blank">X/Twitter</a>',
+    'confucius': '551-479 BCE • Chinese philosopher and politician<br><a href="https://plato.stanford.edu/entries/confucius/" class="text-blue-600 hover:underline text-xs" target="_blank">Stanford Encyclopedia</a> • <a href="https://www.britannica.com/biography/Confucius" class="text-blue-600 hover:underline text-xs" target="_blank">Britannica</a> • <a href="https://www.ancient.eu/Confucius/" class="text-blue-600 hover:underline text-xs" target="_blank">World History</a>',
+    'gandhi': '1869-1948 • Indian independence leader and advocate of non-violence<br><a href="https://www.britannica.com/biography/Mahatma-Gandhi" class="text-blue-600 hover:underline text-xs" target="_blank">Britannica</a> • <a href="https://www.gandhiheritageportal.org/" class="text-blue-600 hover:underline text-xs" target="_blank">Gandhi Heritage</a> • <a href="https://www.mkgandhi.org/" class="text-blue-600 hover:underline text-xs" target="_blank">MKGandhi.org</a>',
+    'buddha': 'c. 563-483 BCE • Founder of Buddhism, "The Awakened One"<br><a href="https://plato.stanford.edu/entries/buddha/" class="text-blue-600 hover:underline text-xs" target="_blank">Stanford Encyclopedia</a> • <a href="https://www.britannica.com/biography/Buddha-founder-of-Buddhism" class="text-blue-600 hover:underline text-xs" target="_blank">Britannica</a> • <a href="https://www.accesstoinsight.org/" class="text-blue-600 hover:underline text-xs" target="_blank">Access to Insight</a>',
+    'socrates': '470-399 BCE • Classical Greek philosopher, teacher of Plato<br><a href="https://plato.stanford.edu/entries/socrates/" class="text-blue-600 hover:underline text-xs" target="_blank">Stanford Encyclopedia</a> • <a href="https://www.britannica.com/biography/Socrates" class="text-blue-600 hover:underline text-xs" target="_blank">Britannica</a> • <a href="https://iep.utm.edu/socrates/" class="text-blue-600 hover:underline text-xs" target="_blank">IEP</a>'
+};
+return bios[id] || '';
+}
+
+function closeEnhancedModal() {
+document.getElementById('enhanced-modal').classList.add('hidden');
+}
+
+// Load news on page load
+loadNews();
+</script>
 </body>
 </html>
