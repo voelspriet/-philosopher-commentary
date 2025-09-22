@@ -1,5 +1,4 @@
-<div class="col-span-4">
-    <div class="bg-blue-600 rounded-lg shadow-lg border-2 border-<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -34,12 +33,20 @@ to {
 
 .quote-marks::before {
 content: '"';
-font-size: 4rem;
+font-size: 2rem;
 position: absolute;
-left: -2rem;
-top: -1rem;
+left: -1rem;
+top: -0.5rem;
 color: #e5e7eb;
 font-family: serif;
+}
+
+@media (min-width: 768px) {
+.quote-marks::before {
+    font-size: 4rem;
+    left: -2rem;
+    top: -1rem;
+}
 }
 
 .philosopher-silhouette {
@@ -80,32 +87,70 @@ border-left-color: #ef4444;
 transform: translateX(4px);
 box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
+
+/* Mobile optimizations */
+/* Scroll indicator animations */
+@keyframes scrollHint {
+0%, 100% { transform: translateY(0); }
+50% { transform: translateY(5px); }
+}
+
+.scroll-hint {
+animation: scrollHint 1.5s ease-in-out infinite;
+}
+
+/* Philosopher section highlight */
+.philosopher-section {
+position: relative;
+background: linear-gradient(to bottom, transparent, rgba(251, 191, 36, 0.05), transparent);
+padding: 0.5rem;
+border-radius: 0.5rem;
+}
+
+@media (max-width: 1024px) {
+.hero-gradient {
+    padding: 2rem 0;
+}
+
+.philosopher-card {
+    min-height: 60px;
+}
+
+.news-card {
+    transform: none;
+}
+
+.news-card:hover {
+    transform: none;
+    border-left-color: #ef4444;
+}
+}
 </style>
 </head>
 <body class="bg-white sf-pro">
 <!-- Hero Section with Sample Quotes -->
-<div class="bg-gradient-to-br from-violet-400 to-purple-400 text-white py-16 mb-0">
+<div class="bg-gradient-to-br from-violet-400 to-purple-400 text-white py-8 lg:py-16 mb-0">
 <div class="container mx-auto px-4">
-<div class="text-center mb-12">
-    <h1 class="text-5xl font-light serif text-white mb-4">
+<div class="text-center mb-8 lg:mb-12">
+    <h1 class="text-3xl lg:text-5xl font-light serif text-white mb-4">
         Philosophy Meets Current Events
     </h1>
-    <p class="text-xl sf-text opacity-90 mb-2">What would history's greatest minds think about today's headlines?</p>
+    <p class="text-lg lg:text-xl sf-text opacity-90 mb-2">What would history's greatest minds think about today's headlines?</p>
     <div class="w-24 h-px bg-white/30 mx-auto mb-6"></div>
     <p class="text-sm sf-text opacity-70 uppercase tracking-wide">Real philosophers • Real analysis • Real insights</p>
 </div>
 
 <!-- Sample Philosophical Takes -->
-<div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-    <div class="bg-gradient-to-br from-amber-50/80 to-orange-50/60 backdrop-blur-sm rounded-lg p-6 border border-amber-200/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-1">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
+    <div class="bg-gradient-to-br from-amber-50/80 to-orange-50/60 backdrop-blur-sm rounded-lg p-4 lg:p-6 border border-amber-200/30 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-1">
         <div class="border-b border-amber-300/40 pb-3 mb-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
-                    <div class="w-8 h-8 rounded-full bg-amber-600 flex items-center justify-center mr-3 shadow-md">
-                        <span class="text-sm font-bold text-white">⚡</span>
+                    <div class="w-6 lg:w-8 h-6 lg:h-8 rounded-full bg-amber-600 flex items-center justify-center mr-3 shadow-md">
+                        <span class="text-xs lg:text-sm font-bold text-white">⚡</span>
                     </div>
                     <div>
-                        <h3 class="font-bold sf-pro text-lg text-amber-900">Friedrich Nietzsche</h3>
+                        <h3 class="font-bold sf-pro text-sm lg:text-lg text-amber-900">Friedrich Nietzsche</h3>
                         <p class="text-xs text-amber-700 font-medium uppercase tracking-wide">The Iconoclast</p>
                     </div>
                 </div>
@@ -113,24 +158,24 @@ box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             </div>
         </div>
         <div class="relative">
-            <div class="absolute -left-2 top-0 text-6xl text-amber-300/40 font-serif leading-none">"</div>
-            <p class="text-sm sf-text text-amber-900 leading-relaxed pl-6 italic">This artificial intelligence is humanity's attempt to create its own übermensch - yet it reveals only our profound weakness and dependence on technological crutches.</p>
-            <div class="absolute -right-2 bottom-0 text-6xl text-amber-300/40 font-serif leading-none">"</div>
+            <div class="absolute -left-1 lg:-left-2 top-0 text-3xl lg:text-6xl text-amber-300/40 font-serif leading-none">"</div>
+            <p class="text-xs lg:text-sm sf-text text-amber-900 leading-relaxed pl-4 lg:pl-6 italic">This artificial intelligence is humanity's attempt to create its own übermensch - yet it reveals only our profound weakness and dependence on technological crutches.</p>
+            <div class="absolute -right-1 lg:-right-2 bottom-0 text-3xl lg:text-6xl text-amber-300/40 font-serif leading-none">"</div>
         </div>
         <div class="mt-4 pt-3 border-t border-amber-300/30">
             <p class="text-xs text-amber-700 font-medium uppercase tracking-wide">On AI Revolution • Modern Analysis</p>
         </div>
     </div>
 
-    <div class="bg-gradient-to-br from-slate-50/80 to-gray-50/60 backdrop-blur-sm rounded-lg p-6 border border-slate-200/40 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-1">
+    <div class="bg-gradient-to-br from-slate-50/80 to-gray-50/60 backdrop-blur-sm rounded-lg p-4 lg:p-6 border border-slate-200/40 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-1">
         <div class="border-b border-slate-300/40 pb-3 mb-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
-                    <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center mr-3 shadow-md">
-                        <span class="text-sm font-bold text-white">🔨</span>
+                    <div class="w-6 lg:w-8 h-6 lg:h-8 rounded-full bg-slate-700 flex items-center justify-center mr-3 shadow-md">
+                        <span class="text-xs lg:text-sm font-bold text-white">🔨</span>
                     </div>
                     <div>
-                        <h3 class="font-bold sf-pro text-lg text-slate-900">Karl Marx</h3>
+                        <h3 class="font-bold sf-pro text-sm lg:text-lg text-slate-900">Karl Marx</h3>
                         <p class="text-xs text-slate-700 font-medium uppercase tracking-wide">The Revolutionary</p>
                     </div>
                 </div>
@@ -138,24 +183,24 @@ box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             </div>
         </div>
         <div class="relative">
-            <div class="absolute -left-2 top-0 text-6xl text-slate-300/40 font-serif leading-none">"</div>
-            <p class="text-sm sf-text text-slate-900 leading-relaxed pl-6 italic">Bitcoin is the ultimate expression of capitalist alienation - imaginary wealth built on the exploitation of both human labor and planetary resources.</p>
-            <div class="absolute -right-2 bottom-0 text-6xl text-slate-300/40 font-serif leading-none">"</div>
+            <div class="absolute -left-1 lg:-left-2 top-0 text-3xl lg:text-6xl text-slate-300/40 font-serif leading-none">"</div>
+            <p class="text-xs lg:text-sm sf-text text-slate-900 leading-relaxed pl-4 lg:pl-6 italic">Bitcoin is the ultimate expression of capitalist alienation - imaginary wealth built on the exploitation of both human labor and planetary resources.</p>
+            <div class="absolute -right-1 lg:-right-2 bottom-0 text-3xl lg:text-6xl text-slate-300/40 font-serif leading-none">"</div>
         </div>
         <div class="mt-4 pt-3 border-t border-slate-300/30">
             <p class="text-xs text-slate-700 font-medium uppercase tracking-wide">On Cryptocurrency • Economic Critique</p>
         </div>
     </div>
 
-    <div class="bg-gradient-to-br from-blue-50/80 to-indigo-50/60 backdrop-blur-sm rounded-lg p-6 border border-blue-200/40 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-1">
+    <div class="bg-gradient-to-br from-blue-50/80 to-indigo-50/60 backdrop-blur-sm rounded-lg p-4 lg:p-6 border border-blue-200/40 shadow-lg hover:shadow-xl transition-all duration-300 hover:transform hover:-translate-y-1">
         <div class="border-b border-blue-300/40 pb-3 mb-4">
             <div class="flex items-center justify-between">
                 <div class="flex items-center">
-                    <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center mr-3 shadow-md">
-                        <span class="text-sm font-bold text-white">📖</span>
+                    <div class="w-6 lg:w-8 h-6 lg:h-8 rounded-full bg-blue-600 flex items-center justify-center mr-3 shadow-md">
+                        <span class="text-xs lg:text-sm font-bold text-white">📖</span>
                     </div>
                     <div>
-                        <h3 class="font-bold sf-pro text-lg text-blue-900">Plato</h3>
+                        <h3 class="font-bold sf-pro text-sm lg:text-lg text-blue-900">Plato</h3>
                         <p class="text-xs text-blue-700 font-medium uppercase tracking-wide">The Idealist</p>
                     </div>
                 </div>
@@ -163,9 +208,9 @@ box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             </div>
         </div>
         <div class="relative">
-            <div class="absolute -left-2 top-0 text-6xl text-blue-300/40 font-serif leading-none">"</div>
-            <p class="text-sm sf-text text-blue-900 leading-relaxed pl-6 italic">These digital caves show us only shadows of reality, while the masses mistake algorithmic echoes for truth itself.</p>
-            <div class="absolute -right-2 bottom-0 text-6xl text-blue-300/40 font-serif leading-none">"</div>
+            <div class="absolute -left-1 lg:-left-2 top-0 text-3xl lg:text-6xl text-blue-300/40 font-serif leading-none">"</div>
+            <p class="text-xs lg:text-sm sf-text text-blue-900 leading-relaxed pl-4 lg:pl-6 italic">These digital caves show us only shadows of reality, while the masses mistake algorithmic echoes for truth itself.</p>
+            <div class="absolute -right-1 lg:-right-2 bottom-0 text-3xl lg:text-6xl text-blue-300/40 font-serif leading-none">"</div>
         </div>
         <div class="mt-4 pt-3 border-t border-blue-300/30">
             <p class="text-xs text-blue-700 font-medium uppercase tracking-wide">On Social Media • Philosophical Truth</p>
@@ -173,8 +218,261 @@ box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     </div>
 </div>
 
-<div class="text-center mt-8">
-    <p class="text-lg sf-text opacity-90">↓ Choose your philosopher and discover their take on today's news ↓</p>
+<div class="text-center mt-6 lg:mt-8">
+    <div class="animate-bounce">
+        <p class="text-lg lg:text-xl sf-text font-bold opacity-100 text-white">👇 Scroll down to see ALL 20+ philosophers 👇</p>
+        <p class="text-base lg:text-lg sf-text opacity-90 mt-2">Choose any thinker below and discover their unique take on today's news</p>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- Main Content -->
+<div class="bg-white py-8 lg:py-12 -mt-0">
+<div class="container mx-auto px-4">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12">
+<div class="lg:col-span-4 order-2 lg:order-1">
+    <div class="bg-white/95 backdrop-blur-sm rounded-lg shadow-xl border-2 border-amber-400 p-4 lg:p-8 sticky top-4 max-h-[calc(100vh-2rem)] overflow-y-auto" style="position: relative;">
+        <!-- Scroll indicator at top -->
+        <div class="absolute top-0 left-0 right-0 bg-gradient-to-b from-amber-400 to-transparent h-8 z-10 flex items-center justify-center">
+            <span class="text-xs text-white font-bold animate-pulse">⬇ SCROLL FOR MORE ⬇</span>
+        </div>
+        <h2 class="text-lg lg:text-xl serif font-medium text-gray-900 mb-2 lg:mb-3 text-center mt-8">Choose Your Philosopher</h2>
+        <p class="text-sm text-amber-600 font-bold mb-4 lg:mb-6 text-center animate-pulse">📜 20+ Great Minds Available - Scroll to See All! 📜</p>
+        
+        <div class="mb-6 lg:mb-8">
+            <div class="bg-amber-50 border-l-4 border-amber-400 p-2 mb-4">
+                <p class="text-xs font-bold text-amber-800">📍 CLASSICAL VOICES (12 philosophers)</p>
+            </div>
+            <h3 class="text-sm font-medium text-gray-700 mb-3 lg:mb-4 sf-text uppercase tracking-wide">Classical Voices</h3>
+            <div class="grid grid-cols-3 lg:grid-cols-2 gap-2 lg:gap-3">
+                <div class="philosopher-card p-2 lg:p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-amber-300 hover:bg-amber-50" 
+                     data-id="aristotle" onclick="selectPhilosopher('aristotle')">
+                    <div class="w-8 lg:w-10 h-8 lg:h-10 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 mx-auto mb-2 lg:mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-xs lg:text-sm font-bold text-white">🏛</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Aristotle</h3>
+                    <p class="text-xs text-amber-600 sf-text font-medium hidden lg:block">The Empiricist</p>
+                </div>
+                
+                <div class="philosopher-card p-2 lg:p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-blue-300 hover:bg-blue-50" 
+                     data-id="plato" onclick="selectPhilosopher('plato')">
+                    <div class="w-8 lg:w-10 h-8 lg:h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 mx-auto mb-2 lg:mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-xs lg:text-sm font-bold text-white">📖</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Plato</h3>
+                    <p class="text-xs text-blue-600 sf-text font-medium hidden lg:block">The Idealist</p>
+                </div>
+                
+                <div class="philosopher-card p-2 lg:p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-gray-400 hover:bg-gray-50" 
+                     data-id="kant" onclick="selectPhilosopher('kant')">
+                    <div class="w-8 lg:w-10 h-8 lg:h-10 rounded-full bg-gradient-to-br from-gray-400 to-gray-600 mx-auto mb-2 lg:mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-xs lg:text-sm font-bold text-white">⚖</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Kant</h3>
+                    <p class="text-xs text-gray-600 sf-text font-medium hidden lg:block">The Moralist</p>
+                </div>
+                
+                <div class="philosopher-card p-2 lg:p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-purple-300 hover:bg-purple-50" 
+                     data-id="nietzsche" onclick="selectPhilosopher('nietzsche')">
+                    <div class="w-8 lg:w-10 h-8 lg:h-10 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 mx-auto mb-2 lg:mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-xs lg:text-sm font-bold text-white">⚡</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Nietzsche</h3>
+                    <p class="text-xs text-purple-600 sf-text font-medium hidden lg:block">The Iconoclast</p>
+                </div>
+                
+                <div class="philosopher-card p-2 lg:p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-red-300 hover:bg-red-50" 
+                     data-id="marx" onclick="selectPhilosopher('marx')">
+                    <div class="w-8 lg:w-10 h-8 lg:h-10 rounded-full bg-gradient-to-br from-red-400 to-red-600 mx-auto mb-2 lg:mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-xs lg:text-sm font-bold text-white">🔨</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Marx</h3>
+                    <p class="text-xs text-red-600 sf-text font-medium hidden lg:block">The Revolutionary</p>
+                </div>
+                
+                <div class="philosopher-card p-2 lg:p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-green-300 hover:bg-green-50" 
+                     data-id="mlk" onclick="selectPhilosopher('mlk')">
+                    <div class="w-8 lg:w-10 h-8 lg:h-10 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 mx-auto mb-2 lg:mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-xs lg:text-sm font-bold text-white">✊🏿</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">MLK Jr.</h3>
+                    <p class="text-xs text-green-600 sf-text font-medium hidden lg:block">The Justice Fighter</p>
+                </div>
+                
+                <div class="philosopher-card p-2 lg:p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-sky-300 hover:bg-sky-50" 
+                     data-id="jesus" onclick="selectPhilosopher('jesus')">
+                    <div class="w-8 lg:w-10 h-8 lg:h-10 rounded-full bg-gradient-to-br from-sky-400 to-sky-600 mx-auto mb-2 lg:mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-xs lg:text-sm font-bold text-white">✝</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Jesus</h3>
+                    <p class="text-xs text-sky-600 sf-text font-medium hidden lg:block">The Teacher</p>
+                </div>
+                
+                <div class="philosopher-card p-2 lg:p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-slate-300 hover:bg-slate-50" 
+                     data-id="clausewitz" onclick="selectPhilosopher('clausewitz')">
+                    <div class="w-8 lg:w-10 h-8 lg:h-10 rounded-full bg-gradient-to-br from-slate-500 to-slate-700 mx-auto mb-2 lg:mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-xs lg:text-sm font-bold text-white">⚔️</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Clausewitz</h3>
+                    <p class="text-xs text-slate-600 sf-text font-medium hidden lg:block">The War Strategist</p>
+                </div>
+                
+                <div class="philosopher-card p-2 lg:p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-gray-300 hover:bg-gray-50" 
+                     data-id="heidegger" onclick="selectPhilosopher('heidegger')">
+                    <div class="w-8 lg:w-10 h-8 lg:h-10 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 mx-auto mb-2 lg:mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-xs lg:text-sm font-bold text-white">🌀</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Heidegger</h3>
+                    <p class="text-xs text-gray-600 sf-text font-medium hidden lg:block">Being & Time</p>
+                </div>
+                
+                <div class="philosopher-card p-2 lg:p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-amber-300 hover:bg-amber-50" 
+                     data-id="goethe" onclick="selectPhilosopher('goethe')">
+                    <div class="w-8 lg:w-10 h-8 lg:h-10 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 mx-auto mb-2 lg:mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-xs lg:text-sm font-bold text-white">🌟</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Goethe</h3>
+                    <p class="text-xs text-amber-600 sf-text font-medium hidden lg:block">The Universal Genius</p>
+                </div>
+                
+                <div class="philosopher-card p-2 lg:p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-indigo-300 hover:bg-indigo-50" 
+                     data-id="schopenhauer" onclick="selectPhilosopher('schopenhauer')">
+                    <div class="w-8 lg:w-10 h-8 lg:h-10 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-700 mx-auto mb-2 lg:mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-xs lg:text-sm font-bold text-white">🎭</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Schopenhauer</h3>
+                    <p class="text-xs text-indigo-600 sf-text font-medium hidden lg:block">The Pessimist</p>
+                </div>
+                
+                <div class="philosopher-card p-2 lg:p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-rose-300 hover:bg-rose-50" 
+                     data-id="hugo" onclick="selectPhilosopher('hugo')">
+                    <div class="w-8 lg:w-10 h-8 lg:h-10 rounded-full bg-gradient-to-br from-rose-500 to-pink-600 mx-auto mb-2 lg:mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-xs lg:text-sm font-bold text-white">🗽</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Hugo</h3>
+                    <p class="text-xs text-rose-600 sf-text font-medium hidden lg:block">The Romantic</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-6 lg:mb-8">
+            <div class="bg-green-50 border-l-4 border-green-400 p-2 mb-4">
+                <p class="text-xs font-bold text-green-800">📍 GREAT MINDS (4 philosophers)</p>
+            </div>
+            <h3 class="text-sm font-medium text-gray-700 mb-3 lg:mb-4 sf-text uppercase tracking-wide">Great Minds</h3>
+            <div class="grid grid-cols-3 lg:grid-cols-2 gap-2 lg:gap-3">
+                <div class="philosopher-card p-2 lg:p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-indigo-300 hover:bg-indigo-50" 
+                     data-id="confucius" onclick="selectPhilosopher('confucius')">
+                    <div class="w-8 lg:w-10 h-8 lg:h-10 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-600 mx-auto mb-2 lg:mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-xs lg:text-sm font-bold text-white">🏮</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Confucius</h3>
+                    <p class="text-xs text-indigo-600 sf-text font-medium hidden lg:block">The Wise Sage</p>
+                </div>
+                
+                <div class="philosopher-card p-2 lg:p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-emerald-300 hover:bg-emerald-50" 
+                     data-id="gandhi" onclick="selectPhilosopher('gandhi')">
+                    <div class="w-8 lg:w-10 h-8 lg:h-10 rounded-full bg-gradient-to-br from-emerald-400 to-green-600 mx-auto mb-2 lg:mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-xs lg:text-sm font-bold text-white">☮</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Gandhi</h3>
+                    <p class="text-xs text-emerald-600 sf-text font-medium hidden lg:block">The Peaceful Rebel</p>
+                </div>
+                
+                <div class="philosopher-card p-2 lg:p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-yellow-300 hover:bg-yellow-50" 
+                     data-id="buddha" onclick="selectPhilosopher('buddha')">
+                    <div class="w-8 lg:w-10 h-8 lg:h-10 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 mx-auto mb-2 lg:mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-xs lg:text-sm font-bold text-white">☸</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Buddha</h3>
+                    <p class="text-xs text-yellow-600 sf-text font-medium hidden lg:block">The Enlightened</p>
+                </div>
+                
+                <div class="philosopher-card p-2 lg:p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-teal-300 hover:bg-teal-50" 
+                     data-id="socrates" onclick="selectPhilosopher('socrates')">
+                    <div class="w-8 lg:w-10 h-8 lg:h-10 rounded-full bg-gradient-to-br from-teal-400 to-cyan-600 mx-auto mb-2 lg:mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-xs lg:text-sm font-bold text-white">🤔</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Socrates</h3>
+                    <p class="text-xs text-teal-600 sf-text font-medium hidden lg:block">The Questioner</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-6 lg:mb-8">
+            <div class="bg-purple-50 border-l-4 border-purple-400 p-2 mb-4">
+                <p class="text-xs font-bold text-purple-800">📍 MODERN VOICES (4 contemporary thinkers)</p>
+            </div>
+            <h3 class="text-sm font-medium text-gray-700 mb-3 lg:mb-4 sf-text uppercase tracking-wide">Modern Voices</h3>
+            <div class="grid grid-cols-3 lg:grid-cols-2 gap-2 lg:gap-3">
+                <div class="philosopher-card p-2 lg:p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-orange-300 hover:bg-orange-50" 
+                     data-id="chomsky" onclick="selectPhilosopher('chomsky')">
+                    <div class="w-8 lg:w-10 h-8 lg:h-10 rounded-full bg-gradient-to-br from-orange-400 to-red-600 mx-auto mb-2 lg:mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-xs lg:text-sm font-bold text-white">📣</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Chomsky</h3>
+                    <p class="text-xs text-orange-600 sf-text font-medium hidden lg:block">The Media Critic</p>
+                </div>
+                
+                <div class="philosopher-card p-2 lg:p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-red-300 hover:bg-red-50" 
+                     data-id="trump" onclick="selectPhilosopher('trump')">
+                    <div class="w-8 lg:w-10 h-8 lg:h-10 rounded-full bg-gradient-to-br from-red-400 to-blue-500 mx-auto mb-2 lg:mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-xs lg:text-sm font-bold text-white">🇺🇸</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Trump</h3>
+                    <p class="text-xs text-red-600 sf-text font-medium hidden lg:block">The Dealmaker</p>
+                </div>
+                
+                <div class="philosopher-card p-2 lg:p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-purple-300 hover:bg-purple-50" 
+                     data-id="musk" onclick="selectPhilosopher('musk')">
+                    <div class="w-8 lg:w-10 h-8 lg:h-10 rounded-full bg-gradient-to-br from-purple-400 to-pink-600 mx-auto mb-2 lg:mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-xs lg:text-sm font-bold text-white">🚀</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Musk</h3>
+                    <p class="text-xs text-purple-600 sf-text font-medium hidden lg:block">The Innovator</p>
+                </div>
+                
+                <div class="philosopher-card p-2 lg:p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-gray-400 hover:bg-gray-50" 
+                     data-id="putin" onclick="selectPhilosopher('putin')">
+                    <div class="w-8 lg:w-10 h-8 lg:h-10 rounded-full bg-gradient-to-br from-gray-500 to-slate-700 mx-auto mb-2 lg:mb-3 flex items-center justify-center shadow-md">
+                        <span class="text-xs lg:text-sm font-bold text-white">🐻</span>
+                    </div>
+                    <h3 class="font-medium text-xs serif text-gray-800">Putin</h3>
+                    <p class="text-xs text-gray-600 sf-text font-medium hidden lg:block">The Strategist</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator at bottom -->
+        <div class="bg-gradient-to-t from-amber-100 to-transparent h-12 -mb-4 flex items-center justify-center">
+            <span class="text-xs text-amber-700 font-bold">⬆ That's all 20 philosophers! ⬆</span>
+        </div>
+
+        <div class="border-t border-gray-200 pt-6">
+            <div id="selection-status" class="text-center mb-4 p-3 bg-amber-100 border-2 border-amber-400 rounded-lg">
+                <p class="text-sm sf-text text-amber-800 font-medium">👆 Pick a philosopher above to start analyzing news</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="lg:col-span-8 order-1 lg:order-2">
+    <div class="flex flex-col lg:flex-row lg:items-center justify-between mb-6 lg:mb-8">
+        <div>
+            <h2 class="text-3xl lg:text-5xl serif font-medium text-gray-900 mb-2 lg:mb-3">How would great thinkers respond to today's news?</h2>
+            <p class="text-base lg:text-lg text-gray-600 sf-text">Fresh perspectives on today's most important stories</p>
+        </div>
+        <div class="text-sm text-red-600 sf-text uppercase tracking-wide font-medium bg-red-50 px-3 lg:px-4 py-2 rounded-full mt-4 lg:mt-0 self-start">Live Feed</div>
+    </div>
+    
+    <div id="news-container" class="space-y-6">
+        <div id="news-loading" class="text-center py-16">
+            <div class="animate-spin rounded-full h-12 w-12 border-2 border-gray-300 border-t-gray-800 mx-auto"></div>
+            <p class="mt-4 text-lg text-gray-600 sf-text">Loading today's headlines...</p>
+            <p class="text-sm text-gray-500 sf-text mt-2">Preparing philosophical analysis...</p>
+        </div>
+    </div>
 </div>
 </div>
 </div>
@@ -195,257 +493,51 @@ box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 </div>
 </footer>
 
-<div class="bg-white py-12 -mt-0">
-<div class="container mx-auto px-4">
-<div class="grid grid-cols-12 gap-12">
-<div class="col-span-4">
-    <div class="bg-white/95 backdrop-blur-sm rounded-lg shadow-xl border-2 border-amber-400 p-8 sticky top-4 max-h-[calc(100vh-2rem)] overflow-y-auto">
-        <h2 class="text-xl serif font-medium text-gray-900 mb-6 text-center">Pick a philosopher above to start analyzing news</h2>
-        
-        <div class="mb-8">
-            <h3 class="text-sm font-medium text-gray-700 mb-4 sf-text uppercase tracking-wide">Classical Voices</h3>
-            <div class="grid grid-cols-2 gap-3">
-                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-amber-300 hover:bg-amber-50" 
-                     data-id="aristotle" onclick="selectPhilosopher('aristotle')">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 mx-auto mb-3 flex items-center justify-center shadow-md">
-                        <span class="text-sm font-bold text-white">🏛</span>
-                    </div>
-                    <h3 class="font-medium text-xs serif text-gray-800">Aristotle</h3>
-                    <p class="text-xs text-amber-600 sf-text font-medium">The Empiricist</p>
-                </div>
-                
-                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-blue-300 hover:bg-blue-50" 
-                     data-id="plato" onclick="selectPhilosopher('plato')">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 mx-auto mb-3 flex items-center justify-center shadow-md">
-                        <span class="text-sm font-bold text-white">📖</span>
-                    </div>
-                    <h3 class="font-medium text-xs serif text-gray-800">Plato</h3>
-                    <p class="text-xs text-blue-600 sf-text font-medium">The Idealist</p>
-                </div>
-                
-                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-gray-400 hover:bg-gray-50" 
-                     data-id="kant" onclick="selectPhilosopher('kant')">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gray-400 to-gray-600 mx-auto mb-3 flex items-center justify-center shadow-md">
-                        <span class="text-sm font-bold text-white">⚖</span>
-                    </div>
-                    <h3 class="font-medium text-xs serif text-gray-800">Kant</h3>
-                    <p class="text-xs text-gray-600 sf-text font-medium">The Moralist</p>
-                </div>
-                
-                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-purple-300 hover:bg-purple-50" 
-                     data-id="nietzsche" onclick="selectPhilosopher('nietzsche')">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 mx-auto mb-3 flex items-center justify-center shadow-md">
-                        <span class="text-sm font-bold text-white">⚡</span>
-                    </div>
-                    <h3 class="font-medium text-xs serif text-gray-800">Nietzsche</h3>
-                    <p class="text-xs text-purple-600 sf-text font-medium">The Iconoclast</p>
-                </div>
-                
-                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-red-300 hover:bg-red-50" 
-                     data-id="marx" onclick="selectPhilosopher('marx')">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-red-400 to-red-600 mx-auto mb-3 flex items-center justify-center shadow-md">
-                        <span class="text-sm font-bold text-white">🔨</span>
-                    </div>
-                    <h3 class="font-medium text-xs serif text-gray-800">Marx</h3>
-                    <p class="text-xs text-red-600 sf-text font-medium">The Revolutionary</p>
-                </div>
-                
-                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-green-300 hover:bg-green-50" 
-                     data-id="mlk" onclick="selectPhilosopher('mlk')">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-green-400 to-emerald-600 mx-auto mb-3 flex items-center justify-center shadow-md">
-                        <span class="text-sm font-bold text-white">✊🏿</span>
-                    </div>
-                    <h3 class="font-medium text-xs serif text-gray-800">MLK Jr.</h3>
-                    <p class="text-xs text-green-600 sf-text font-medium">The Justice Fighter</p>
-                </div>
-                
-                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-sky-300 hover:bg-sky-50" 
-                     data-id="jesus" onclick="selectPhilosopher('jesus')">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-sky-400 to-sky-600 mx-auto mb-3 flex items-center justify-center shadow-md">
-                        <span class="text-sm font-bold text-white">✝</span>
-                    </div>
-                    <h3 class="font-medium text-xs serif text-gray-800">Jesus</h3>
-                    <p class="text-xs text-sky-600 sf-text font-medium">The Teacher</p>
-                </div>
-                
-                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-slate-300 hover:bg-slate-50" 
-                     data-id="clausewitz" onclick="selectPhilosopher('clausewitz')">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-slate-500 to-slate-700 mx-auto mb-3 flex items-center justify-center shadow-md">
-                        <span class="text-sm font-bold text-white">⚔️</span>
-                    </div>
-                    <h3 class="font-medium text-xs serif text-gray-800">Clausewitz</h3>
-                    <p class="text-xs text-slate-600 sf-text font-medium">The War Strategist</p>
-                </div>
-                
-                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-gray-300 hover:bg-gray-50" 
-                     data-id="heidegger" onclick="selectPhilosopher('heidegger')">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gray-600 to-gray-800 mx-auto mb-3 flex items-center justify-center shadow-md">
-                        <span class="text-sm font-bold text-white">🌀</span>
-                    </div>
-                    <h3 class="font-medium text-xs serif text-gray-800">Heidegger</h3>
-                    <p class="text-xs text-gray-600 sf-text font-medium">Being & Time</p>
-                </div>
-                
-                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-amber-300 hover:bg-amber-50" 
-                     data-id="goethe" onclick="selectPhilosopher('goethe')">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-500 to-orange-600 mx-auto mb-3 flex items-center justify-center shadow-md">
-                        <span class="text-sm font-bold text-white">🌟</span>
-                    </div>
-                    <h3 class="font-medium text-xs serif text-gray-800">Goethe</h3>
-                    <p class="text-xs text-amber-600 sf-text font-medium">The Universal Genius</p>
-                </div>
-                
-                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-indigo-300 hover:bg-indigo-50" 
-                     data-id="schopenhauer" onclick="selectPhilosopher('schopenhauer')">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-indigo-700 mx-auto mb-3 flex items-center justify-center shadow-md">
-                        <span class="text-sm font-bold text-white">🎭</span>
-                    </div>
-                    <h3 class="font-medium text-xs serif text-gray-800">Schopenhauer</h3>
-                    <p class="text-xs text-indigo-600 sf-text font-medium">The Pessimist</p>
-                </div>
-                
-                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-rose-300 hover:bg-rose-50" 
-                     data-id="hugo" onclick="selectPhilosopher('hugo')">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-rose-500 to-pink-600 mx-auto mb-3 flex items-center justify-center shadow-md">
-                        <span class="text-sm font-bold text-white">🗽</span>
-                    </div>
-                    <h3 class="font-medium text-xs serif text-gray-800">Hugo</h3>
-                    <p class="text-xs text-rose-600 sf-text font-medium">The Romantic</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="mb-8">
-            <h3 class="text-sm font-medium text-gray-700 mb-4 sf-text uppercase tracking-wide">Great Minds</h3>
-            <div class="grid grid-cols-2 gap-3">
-                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-indigo-300 hover:bg-indigo-50" 
-                     data-id="confucius" onclick="selectPhilosopher('confucius')">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-600 mx-auto mb-3 flex items-center justify-center shadow-md">
-                        <span class="text-sm font-bold text-white">🏮</span>
-                    </div>
-                    <h3 class="font-medium text-xs serif text-gray-800">Confucius</h3>
-                    <p class="text-xs text-indigo-600 sf-text font-medium">The Wise Sage</p>
-                </div>
-                
-                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-emerald-300 hover:bg-emerald-50" 
-                     data-id="gandhi" onclick="selectPhilosopher('gandhi')">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-emerald-400 to-green-600 mx-auto mb-3 flex items-center justify-center shadow-md">
-                        <span class="text-sm font-bold text-white">☮</span>
-                    </div>
-                    <h3 class="font-medium text-xs serif text-gray-800">Gandhi</h3>
-                    <p class="text-xs text-emerald-600 sf-text font-medium">The Peaceful Rebel</p>
-                </div>
-                
-                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-yellow-300 hover:bg-yellow-50" 
-                     data-id="buddha" onclick="selectPhilosopher('buddha')">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 mx-auto mb-3 flex items-center justify-center shadow-md">
-                        <span class="text-sm font-bold text-white">☸</span>
-                    </div>
-                    <h3 class="font-medium text-xs serif text-gray-800">Buddha</h3>
-                    <p class="text-xs text-yellow-600 sf-text font-medium">The Enlightened</p>
-                </div>
-                
-                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-teal-300 hover:bg-teal-50" 
-                     data-id="socrates" onclick="selectPhilosopher('socrates')">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-teal-400 to-cyan-600 mx-auto mb-3 flex items-center justify-center shadow-md">
-                        <span class="text-sm font-bold text-white">🤔</span>
-                    </div>
-                    <h3 class="font-medium text-xs serif text-gray-800">Socrates</h3>
-                    <p class="text-xs text-teal-600 sf-text font-medium">The Questioner</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="mb-8">
-            <h3 class="text-sm font-medium text-gray-700 mb-4 sf-text uppercase tracking-wide">Modern Voices</h3>
-            <div class="grid grid-cols-2 gap-3">
-                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-orange-300 hover:bg-orange-50" 
-                     data-id="chomsky" onclick="selectPhilosopher('chomsky')">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-red-600 mx-auto mb-3 flex items-center justify-center shadow-md">
-                        <span class="text-sm font-bold text-white">📣</span>
-                    </div>
-                    <h3 class="font-medium text-xs serif text-gray-800">Chomsky</h3>
-                    <p class="text-xs text-orange-600 sf-text font-medium">The Media Critic</p>
-                </div>
-                
-                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-red-300 hover:bg-red-50" 
-                     data-id="trump" onclick="selectPhilosopher('trump')">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-red-400 to-blue-500 mx-auto mb-3 flex items-center justify-center shadow-md">
-                        <span class="text-sm font-bold text-white">🇺🇸</span>
-                    </div>
-                    <h3 class="font-medium text-xs serif text-gray-800">Trump</h3>
-                    <p class="text-xs text-red-600 sf-text font-medium">The Dealmaker</p>
-                </div>
-                
-                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-purple-300 hover:bg-purple-50" 
-                     data-id="musk" onclick="selectPhilosopher('musk')">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-purple-400 to-pink-600 mx-auto mb-3 flex items-center justify-center shadow-md">
-                        <span class="text-sm font-bold text-white">🚀</span>
-                    </div>
-                    <h3 class="font-medium text-xs serif text-gray-800">Musk</h3>
-                    <p class="text-xs text-purple-600 sf-text font-medium">The Innovator</p>
-                </div>
-                
-                <div class="philosopher-card p-4 rounded-lg cursor-pointer text-center transition-all hover:shadow-md border border-gray-100 hover:border-gray-400 hover:bg-gray-50" 
-                     data-id="putin" onclick="selectPhilosopher('putin')">
-                    <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gray-500 to-slate-700 mx-auto mb-3 flex items-center justify-center shadow-md">
-                        <span class="text-sm font-bold text-white">🐻</span>
-                    </div>
-                    <h3 class="font-medium text-xs serif text-gray-800">Putin</h3>
-                    <p class="text-xs text-gray-600 sf-text font-medium">The Strategist</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="border-t border-gray-200 pt-6">
-            <div id="selection-status" class="text-center mb-4 p-3 bg-amber-100 border-2 border-amber-400 rounded-lg">
-                <p class="text-sm sf-text text-amber-800 font-medium">👆 Pick a philosopher above to start analyzing news</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="col-span-8">
-    <div class="flex items-center justify-between mb-8">
-        <div>
-            <h2 class="text-5xl serif font-medium text-gray-900 mb-3">How would great thinkers respond to today's news?</h2>
-            <p class="text-lg text-gray-600 sf-text">Fresh perspectives on today's most important stories</p>
-        </div>
-        <div class="text-sm text-red-600 sf-text uppercase tracking-wide font-medium bg-red-50 px-4 py-2 rounded-full">Live Feed</div>
-    </div>
-    
-    <div id="news-container" class="space-y-6">
-        <div id="news-loading" class="text-center py-16">
-            <div class="animate-spin rounded-full h-12 w-12 border-2 border-gray-300 border-t-gray-800 mx-auto"></div>
-            <p class="mt-4 text-lg text-gray-600 sf-text">Loading today's headlines...</p>
-            <p class="text-sm text-gray-500 sf-text mt-2">Preparing philosophical analysis...</p>
-        </div>
-    </div>
-</div>
-</div>
-</div>
-
 <!-- Modal -->
 <div id="enhanced-modal" class="fixed inset-0 bg-black/40 backdrop-blur-sm hidden z-50 flex items-center justify-center p-4">
 <div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-hidden shadow-xl flex flex-col">
-<div class="bg-white rounded-t-2xl border-b border-gray-100 p-6 flex-shrink-0">
+<div class="bg-white rounded-t-2xl border-b border-gray-100 p-4 lg:p-6 flex-shrink-0">
     <div class="flex justify-between items-start">
         <div>
-            <h3 id="modal-title" class="text-xl font-medium text-gray-900 sf-pro">Analysis</h3>
+            <h3 id="modal-title" class="text-lg lg:text-xl font-medium text-gray-900 sf-pro">Analysis</h3>
             <p id="modal-subtitle" class="text-sm text-gray-500 sf-text mt-1">Loading...</p>
             <div id="philosopher-bio" class="mt-3 text-xs text-gray-600 sf-text"></div>
         </div>
-        <button onclick="closeEnhancedModal()" class="text-gray-400 hover:text-gray-600 text-2xl sf-text">×</button>
+        <button onclick="closeEnhancedModal()" class="text-gray-400 hover:text-gray-600 text-2xl sf-text ml-4">×</button>
     </div>
 </div>
 
-<div id="modal-content" class="p-8 overflow-y-auto flex-1">
+<div id="modal-content" class="p-4 lg:p-8 overflow-y-auto flex-1">
     <!-- Content will be loaded dynamically -->
 </div>
 </div>
 </div>
 
+<!-- Floating scroll hint -->
+<div id="scroll-hint" class="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-amber-500 text-white px-6 py-3 rounded-full shadow-lg z-50 transition-all duration-500" style="display: none;">
+    <p class="text-sm font-bold flex items-center gap-2">
+        <span class="animate-bounce">⬇</span>
+        Scroll down to see all 20+ philosophers!
+        <span class="animate-bounce">⬇</span>
+    </p>
+</div>
+
 <script>
+// Show scroll hint after 2 seconds if user hasn't scrolled
+setTimeout(() => {
+    const hint = document.getElementById('scroll-hint');
+    const philosopherSection = document.querySelector('.philosopher-card');
+
+    if (philosopherSection && !sessionStorage.getItem('scrollHintShown')) {
+        hint.style.display = 'block';
+        sessionStorage.setItem('scrollHintShown', 'true');
+
+        // Hide after 5 seconds or on scroll
+        setTimeout(() => { hint.style.display = 'none'; }, 5000);
+        window.addEventListener('scroll', () => { hint.style.display = 'none'; }, { once: true });
+    }
+}, 2000);
+
 let selectedPhilosophers = [];
 
 function selectPhilosopher(philosopherId) {
@@ -491,57 +583,14 @@ const selectedName = selectedPhilosophers.length > 0 ? getPhilosopherName(select
 document.querySelectorAll('.analyze-btn').forEach(btn => {
     if (selectedPhilosophers.length > 0) {
         btn.disabled = false;
-        btn.className = 'analyze-btn px-6 py-3 text-sm font-medium sf-text bg-blue-600 text-white hover:bg-blue-700 rounded-lg transition-all shadow-sm';
+        btn.className = 'analyze-btn px-4 lg:px-6 py-2 lg:py-3 text-sm font-medium sf-text bg-blue-600 text-white hover:bg-blue-700 rounded-lg transition-all shadow-sm';
         btn.innerHTML = `<span class="button-text">What would ${selectedName} say?</span>`;
     } else {
         btn.disabled = true;
-        btn.className = 'analyze-btn px-6 py-3 text-sm font-medium sf-text border border-gray-300 text-gray-500 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed';
+        btn.className = 'analyze-btn px-4 lg:px-6 py-2 lg:py-3 text-sm font-medium sf-text border border-gray-300 text-gray-500 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed';
         btn.innerHTML = '<span class="button-text">Select Philosopher First</span>';
     }
 });
-}
-
-function toggleCompareMode() {
-compareMode = !compareMode;
-const btn = document.getElementById('compare-btn');
-
-if (compareMode) {
-    btn.textContent = 'Exit Compare Mode';
-    btn.className = 'w-full py-3 px-4 rounded-lg font-medium text-sm bg-red-600 text-white hover:bg-red-700 transition-all sf-text';
-    selectedPhilosophers = [];
-    document.querySelectorAll('.philosopher-card').forEach(card => {
-        card.classList.remove('ring-2', 'ring-blue-500', 'bg-blue-50', 'ring-4', 'ring-yellow-400', 'bg-yellow-50');
-    });
-    updateCompareUI();
-} else {
-    btn.textContent = 'Comparative Analysis Mode';
-    btn.className = 'w-full py-3 px-4 rounded-lg font-medium text-sm bg-gray-800 text-white hover:bg-gray-900 transition-all sf-text';
-    selectedPhilosophers = [];
-    document.querySelectorAll('.philosopher-card').forEach(card => {
-        card.classList.remove('ring-4', 'ring-yellow-400', 'bg-yellow-50');
-    });
-    updateSelectionStatus();
-    updateButtons();
-}
-}
-
-function updateCompareUI() {
-const statusEl = document.getElementById('selection-status');
-statusEl.innerHTML = '<p class="text-sm sf-text text-purple-600 font-medium">' + selectedPhilosophers.length + ' philosophers selected for comparison</p>';
-
-if (compareMode) {
-    document.querySelectorAll('.analyze-btn').forEach(btn => {
-        if (selectedPhilosophers.length >= 2) {
-            btn.innerHTML = '<span class="button-text">Compare ' + selectedPhilosophers.length + ' Perspectives</span>';
-            btn.disabled = false;
-            btn.className = 'analyze-btn px-6 py-3 text-sm font-medium sf-text bg-purple-600 text-white hover:bg-purple-700 rounded-lg transition-all shadow-sm';
-        } else {
-            btn.innerHTML = '<span class="button-text">Select 2-3 for Comparison</span>';
-            btn.disabled = true;
-            btn.className = 'analyze-btn px-6 py-3 text-sm font-medium sf-text bg-gray-100 text-gray-400 rounded-lg transition-all cursor-not-allowed';
-        }
-    });
-}
 }
 
 async function loadNews() {
@@ -561,23 +610,26 @@ const loadingEl = document.getElementById('news-loading');
 if(loadingEl) loadingEl.remove();
 
 stories.forEach((story, index) => {
+    // Add breaking news badge to first story
+    const isBreaking = index === 0;
+    
     const card = document.createElement('div');
-    card.className = 'news-card bg-white rounded-xl shadow-sm border border-gray-200 p-8 hover:shadow-lg transition-all duration-300';
+    card.className = 'news-card bg-white rounded-xl shadow-sm border border-gray-200 p-6 lg:p-8 hover:shadow-lg transition-all duration-300';
     card.innerHTML = `
-        <div class="flex justify-between items-start mb-6">
-            <div class="flex items-center">
+        <div class="flex flex-col lg:flex-row lg:justify-between lg:items-start mb-4 lg:mb-6">
+            <div class="flex items-center mb-2 lg:mb-0">
                 <div class="w-3 h-3 bg-red-500 rounded-full mr-3 animate-pulse"></div>
-                <span class="text-sm text-red-600 font-medium sf-text uppercase tracking-wide">Breaking</span>
+                <span class="text-sm text-red-600 font-medium sf-text uppercase tracking-wide">${isBreaking ? 'Breaking News Analysis' : 'Breaking'}</span>
             </div>
             <span class="text-sm text-gray-500 sf-text">${new Date(story.publishedAt).toLocaleDateString()}</span>
         </div>
         
-        <h3 class="text-2xl font-medium serif text-gray-900 leading-tight mb-4">${story.title}</h3>
-        <p class="text-base sf-text text-gray-700 leading-relaxed mb-6">${(story.description || '').substring(0, 300)}...</p>
+        <h3 class="text-xl lg:text-2xl font-medium serif text-gray-900 leading-tight mb-4">${story.title}</h3>
+        <p class="text-sm lg:text-base sf-text text-gray-700 leading-relaxed mb-6">${(story.description || '').substring(0, 300)}...</p>
         
-        <div class="flex justify-between items-center pt-4 border-t border-gray-100">
+        <div class="flex flex-col lg:flex-row lg:justify-between lg:items-center pt-4 border-t border-gray-100 space-y-3 lg:space-y-0">
             <a href="${story.url}" target="_blank" class="text-sm text-blue-600 hover:text-blue-800 sf-text font-medium">Read full BBC story →</a>
-            <button onclick="getCommentary(${index})" class="analyze-btn px-6 py-3 text-sm font-medium sf-text border-2 border-blue-300 text-blue-700 hover:bg-blue-50 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:border-gray-300 disabled:text-gray-500 disabled:bg-gray-50" disabled>
+            <button onclick="getCommentary(${index})" class="analyze-btn px-4 lg:px-6 py-2 lg:py-3 text-sm font-medium sf-text border-2 border-blue-300 text-blue-700 hover:bg-blue-50 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:border-gray-300 disabled:text-gray-500 disabled:bg-gray-50" disabled>
                 <span class="button-text">👈 Select Philosopher First</span>
             </button>
         </div>
@@ -624,57 +676,57 @@ const reasoning = (sections.find(s => s.includes('REASONING:')) || '').replace('
 const relevance = (sections.find(s => s.includes('RELEVANCE:')) || '').replace('RELEVANCE:', '').trim();
 const insights = (sections.find(s => s.includes('INSIGHTS:')) || '').replace('INSIGHTS:', '').trim();
 
-let html = `<div class="space-y-8">
-    <div class="border-b border-gray-200 pb-6">
+let html = `<div class="space-y-6 lg:space-y-8">
+    <div class="border-b border-gray-200 pb-4 lg:pb-6">
         <div class="flex items-center mb-4">
-            <div class="philosopher-silhouette">${data.philosopher.split(' ').map(n => n[0]).join('')}</div>
+            <div class="philosopher-silhouette w-12 h-12 lg:w-16 lg:h-16">${data.philosopher.split(' ').map(n => n[0]).join('')}</div>
             <div class="ml-4">
-                <h3 class="text-xl font-bold serif text-gray-900">${data.philosopher}</h3>
+                <h3 class="text-lg lg:text-xl font-bold serif text-gray-900">${data.philosopher}</h3>
                 <p class="text-sm text-gray-600 sf-text">Philosophical Analysis</p>
             </div>
         </div>
         <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-red-400">
             <h4 class="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2 mono">Breaking News Analysis</h4>
-            <h5 class="text-lg font-medium text-gray-900 serif mb-2">${data.story.title}</h5>
+            <h5 class="text-base lg:text-lg font-medium text-gray-900 serif mb-2">${data.story.title}</h5>
             <p class="text-sm text-gray-700 sf-text leading-relaxed mb-2">${data.story.description}</p>
             <p class="text-xs text-gray-500 mono">BBC News • ${new Date().toLocaleDateString()}</p>
         </div>
     </div>
     
-    <div class="text-center py-8 fade-in">
+    <div class="text-center py-6 lg:py-8 fade-in">
         <div class="relative inline-block quote-marks">
-            <p class="text-2xl font-light serif text-gray-800 leading-relaxed max-w-2xl">${conclusion}</p>
+            <p class="text-lg lg:text-2xl font-light serif text-gray-800 leading-relaxed max-w-2xl">${conclusion}</p>
         </div>
         <p class="text-sm text-gray-500 mt-4 serif">— ${data.philosopher}</p>
     </div>
     
-    <div class="space-y-6">`;
+    <div class="space-y-4 lg:space-y-6">`;
 
 if (relevance) {
-    html += `<div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 fade-in">
-        <h5 class="text-xl font-bold serif text-gray-900 mb-4">Contemporary Analysis</h5>
-        <p class="text-base sf-text text-gray-800 leading-relaxed">${relevance}</p>
+    html += `<div class="bg-white p-6 lg:p-8 rounded-xl shadow-sm border border-gray-100 fade-in">
+        <h5 class="text-lg lg:text-xl font-bold serif text-gray-900 mb-4">Contemporary Analysis</h5>
+        <p class="text-sm lg:text-base sf-text text-gray-800 leading-relaxed">${relevance}</p>
     </div>`;
 }
 
 if (stance) {
-    html += `<div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 fade-in">
-        <h5 class="text-xl font-bold serif text-gray-900 mb-4">Philosophical Position</h5>
-        <p class="text-base sf-text text-gray-800 leading-relaxed">${stance}</p>
+    html += `<div class="bg-white p-6 lg:p-8 rounded-xl shadow-sm border border-gray-100 fade-in">
+        <h5 class="text-lg lg:text-xl font-bold serif text-gray-900 mb-4">Philosophical Position</h5>
+        <p class="text-sm lg:text-base sf-text text-gray-800 leading-relaxed">${stance}</p>
     </div>`;
 }
 
 if (insights) {
-    html += `<div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 fade-in">
-        <h5 class="text-xl font-bold serif text-gray-900 mb-6">Key Insights</h5>
+    html += `<div class="bg-white p-6 lg:p-8 rounded-xl shadow-sm border border-gray-100 fade-in">
+        <h5 class="text-lg lg:text-xl font-bold serif text-gray-900 mb-6">Key Insights</h5>
         <div class="space-y-4">`;
     
     const insightsList = insights.split(/(?=\d+\.)/).filter(item => item.trim());
     insightsList.forEach((item, index) => {
         const cleanedItem = item.trim().replace(/^\d+\.\s*/, '');
         html += `<div class="flex items-start">
-            <span class="mono text-sm font-medium text-gray-400 mr-4 mt-1">${(index + 1).toString().padStart(2, '0')}</span>
-            <p class="text-base sf-text text-gray-800 leading-relaxed">${cleanedItem}</p>
+            <span class="mono text-sm font-medium text-gray-400 mr-4 mt-1 flex-shrink-0">${(index + 1).toString().padStart(2, '0')}</span>
+            <p class="text-sm lg:text-base sf-text text-gray-800 leading-relaxed">${cleanedItem}</p>
         </div>`;
     });
     
@@ -682,85 +734,15 @@ if (insights) {
 }
 
 if (reasoning) {
-    html += `<div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 fade-in">
-        <h5 class="text-xl font-bold serif text-gray-900 mb-4">Philosophical Framework</h5>
-        <p class="text-base sf-text text-gray-800 leading-relaxed">${reasoning}</p>
+    html += `<div class="bg-white p-6 lg:p-8 rounded-xl shadow-sm border border-gray-100 fade-in">
+        <h5 class="text-lg lg:text-xl font-bold serif text-gray-900 mb-4">Philosophical Framework</h5>
+        <p class="text-sm lg:text-base sf-text text-gray-800 leading-relaxed">${reasoning}</p>
     </div>`;
 }
 
 html += `</div></div>`;
 
 document.getElementById('modal-content').innerHTML = html;
-}
-
-async function generateCompareView(story, storyIndex) {
-document.getElementById('modal-title').textContent = 'Comparative Philosophical Analysis';
-document.getElementById('modal-subtitle').textContent = `${selectedPhilosophers.length} perspectives on current events`;
-
-const analyses = await Promise.all(
-    selectedPhilosophers.map(async (philosopherId) => {
-        const response = await fetch('/api/commentary/' + philosopherId + '/' + storyIndex);
-        const data = await response.json();
-        return { philosopherId, data };
-    })
-);
-
-let html = `<div class="space-y-6">
-    <div class="border-b border-gray-100 pb-6">
-        <h4 class="text-sm text-red-600 uppercase tracking-wide mb-2 sf-text font-medium">Breaking News Analysis</h4>
-        <h5 class="text-2xl font-medium text-gray-900 mb-3 serif">${story.title}</h5>
-        <p class="text-gray-700 sf-text leading-relaxed">${story.description}</p>
-    </div>
-    <div class="grid gap-6">`;
-
-analyses.forEach(({ philosopherId, data }) => {
-    const sections = data.commentary.split(/(?=STANCE:|REASONING:|RELEVANCE:|INSIGHTS:|CONCLUSION:)/);
-    const relevance = (sections.find(s => s.includes('RELEVANCE:')) || '').replace('RELEVANCE:', '').trim();
-    const stance = (sections.find(s => s.includes('STANCE:')) || '').replace('STANCE:', '').trim();
-    
-    html += `<div class="border-2 border-gray-100 rounded-xl p-6 bg-gradient-to-br from-gray-50 to-white">
-        <div class="flex items-center mb-4">
-            <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold">
-                ${data.philosopher.split(' ').map(n => n[0]).join('')}
-            </div>
-            <div class="ml-4">
-                <h3 class="text-lg font-semibold text-gray-900 sf-pro">${data.philosopher}</h3>
-                <p class="text-sm text-gray-600 sf-text">${getPhilosopherDescriptor(philosopherId)}</p>
-            </div>
-        </div>`;
-    
-    if (relevance) {
-        html += `<div class="mb-4">
-            <h4 class="text-sm font-medium text-gray-700 mb-2 sf-pro">Analysis</h4>
-            <p class="text-sm text-gray-800 sf-text leading-relaxed">${relevance.substring(0, 200)}...</p>
-        </div>`;
-    }
-    
-    if (stance) {
-        html += `<div>
-            <h4 class="text-sm font-medium text-gray-700 mb-2 sf-pro">Key Position</h4>
-            <p class="text-sm text-gray-800 sf-text leading-relaxed">${stance.substring(0, 200)}...</p>
-        </div>`;
-    }
-    
-    html += `</div>`;
-});
-
-html += `</div></div>`;
-document.getElementById('modal-content').innerHTML = html;
-}
-
-function getPhilosopherDescriptor(id) {
-const descriptors = {
-    'aristotle': 'The Empirical Analyst', 'plato': 'The Idealistic Theorist', 'kant': 'The Moral Philosopher',
-    'nietzsche': 'The Cultural Critic', 'marx': 'The Revolutionary Thinker', 'jesus': 'The Spiritual Teacher',
-    'mlk': 'The Justice Fighter', 'clausewitz': 'The Master of War', 'heidegger': 'The Being Philosopher',
-    'goethe': 'The Universal Genius', 'schopenhauer': 'The Great Pessimist', 'hugo': 'The Romantic Humanist',
-    'putin': 'The Strategic Realist', 'chomsky': 'The Media Critic', 'trump': 'The Populist Leader', 
-    'musk': 'The Tech Innovator', 'confucius': 'The Wise Sage', 'gandhi': 'The Peaceful Rebel', 
-    'buddha': 'The Enlightened One', 'socrates': 'The Great Questioner'
-};
-return descriptors[id] || 'Philosophical Thinker';
 }
 
 function getPhilosopherBio(id) {
